@@ -1926,22 +1926,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     const navbar = document.querySelector('.navbar');
                     const navHeight = navbar ? navbar.offsetHeight : 80;
-                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight;
 
-                    window.scrollTo({
-                        top: Math.max(0, targetPosition),
-                        behavior: 'smooth'
-                    });
-
-                    // Highlight pulse on contact grid when Let's Talk / Contact is clicked
                     if (targetId === '#contact') {
+                        // Scroll directly to contact grid section
+                        const contactGrid = document.querySelector('.contact-grid') || targetElement;
+                        const targetY = contactGrid.getBoundingClientRect().top + window.pageYOffset - navHeight - 30;
+
+                        window.scrollTo({
+                            top: Math.max(0, targetY),
+                            behavior: 'smooth'
+                        });
+
                         setTimeout(() => {
-                            const contactGrid = document.querySelector('.contact-grid');
-                            if (contactGrid) {
-                                contactGrid.classList.add('highlight-pulse');
-                                setTimeout(() => contactGrid.classList.remove('highlight-pulse'), 1400);
+                            const grid = document.querySelector('.contact-grid');
+                            if (grid) {
+                                grid.classList.add('highlight-pulse');
+                                setTimeout(() => grid.classList.remove('highlight-pulse'), 1400);
                             }
-                        }, 450);
+                        }, 400);
+                    } else {
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight;
+                        window.scrollTo({
+                            top: Math.max(0, targetPosition),
+                            behavior: 'smooth'
+                        });
                     }
                 }
             });

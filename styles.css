@@ -3573,4 +3573,21 @@ section {
     100% { opacity: 0; visibility: hidden; }
 }
 
+/* Contact Grid Highlight Pulse Effect for Let's Talk CTA button */
+.contact-grid.highlight-pulse .contact-card {
+    animation: contactPulseGlow 1.2s ease-in-out infinite alternate;
+}
+
+@keyframes contactPulseGlow {
+    0% {
+        border-color: rgba(212, 175, 55, 0.4);
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+    }
+    100% {
+        border-color: #ffd700;
+        box-shadow: 0 0 30px rgba(255, 215, 0, 0.8), 0 0 50px rgba(179, 46, 51, 0.6);
+        transform: translateY(-4px) scale(1.03);
+    }
+}
+
 
