@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>James Niño B. Mandawe | Computer Engineering Profile</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Opening Splash Screen Overlay -->
+    <div id="intro-screen" class="intro-screen" title="Click anywhere to enter">
+        <!-- 60fps Interactive Particle & Energy Web Canvas -->
+        <canvas id="intro-canvas" class="intro-bg-canvas"></canvas>
+        <div class="intro-ambient-glow-left"></div>
+        <div class="intro-ambient-glow-right"></div>
+        <div class="intro-grid-overlay"></div>
+
+        <div class="intro-content-container">
+            <!-- Integrated Kinetic Typography Name -->
+            <div class="intro-giant-title">
+                <span class="giant-line text-gradient-gold">JAMES NIÑO</span>
+                <span class="giant-line text-gradient-carmine">MANDAWE</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">
+                <span class="logo-box">JM</span>
+                <span class="logo-text">JAMES</span>
+            </a>
+            <nav class="nav-links">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+            <div class="nav-actions">
+                <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Dark/Light Mode" title="Toggle Dark/Light Mode">
+                    <svg class="theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    <svg class="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                </button>
+                <button id="lanyard-toggle" class="lanyard-toggle-btn" aria-label="Toggle ID Card Sling" title="ID Sling: ACTIVE (Click to Hide)">
+                    <svg class="id-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="4" width="18" height="16" rx="2"></rect>
+                        <circle cx="9" cy="10" r="2"></circle>
+                        <line x1="15" y1="8" x2="19" y2="8"></line>
+                        <line x1="15" y1="12" x2="19" y2="12"></line>
+                        <line x1="7" y1="16" x2="17" y2="16"></line>
+                    </svg>
+                    <span class="id-status-badge" aria-hidden="true"></span>
+                </button>
+                <a href="#contact" class="nav-cta-btn">Let's Talk</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Signature Scroll-Reactive Bouncy Student ID Lanyard (Hidden at top, extends down on scroll) -->
+    <!-- Signature 3D Interactive Smart ID Card Lanyard -->
+    <aside id="lanyard" class="lanyard-wrapper lanyard-hidden" aria-label="Student ID Card">
+        <div class="lanyard-strap">
+            <div class="strap-texture"></div>
+            <div class="strap-text">CIT-U • COMPUTER ENGINEERING • STUDENT ID</div>
+        </div>
+        <div class="lanyard-clip">
+            <div class="clip-ring"></div>
+            <div class="clip-swivel"></div>
+            <div class="clip-body"></div>
+        </div>
+
+        <!-- 3D Flippable Card Container -->
+        <div class="lanyard-card-container" id="lanyard-card-3d">
+            <div class="lanyard-card-inner">
+                <!-- Front Side -->
+                <div class="card-face card-front">
+                    <div class="card-glare"></div>
+                    <div class="card-rivet rivet-tl"></div>
+                    <div class="card-rivet rivet-tr"></div>
+                    <div class="card-rivet rivet-bl"></div>
+                    <div class="card-rivet rivet-br"></div>
+
+                    <div class="card-header-bar">
+                        <div class="header-logo-group">
+                            <span class="citu-mini-logo">CIT-U</span>
+                            <span class="card-header-title">CEBU INSTITUTE OF TECHNOLOGY</span>
+                        </div>
+                        <button id="card-close-btn" class="card-close-btn" title="Hide ID Card Sling" aria-label="Hide ID Card Sling">✕</button>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="card-photo-wrapper">
+                            <div class="photo-glow-ring"></div>
+                            <img src="assets/frontview_transparent.png" alt="James Niño B. Mandawe Front View Photo" class="card-photo">
+                            <span class="smart-ic-chip" title="Smart IC Security Chip"></span>
+                        </div>
+                        <div class="card-info">
+                            <div class="card-id-header">
+                                <span class="id-type">OFFICIAL STUDENT BADGE</span>
+                                <span class="status-dot-green"></span>
+                            </div>
+                            <h2 class="card-name">James Niño B. Mandawe</h2>
+                            <p class="card-role">BS Computer Engineering</p>
+                            <div class="card-meta-row">
+                                <span class="card-badge holographic">VALIDATED STUDENT</span>
+                                <span class="card-year-tag">3RD YEAR</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-footer-bar">
+                        <div class="barcode-wrapper">
+                            <div class="card-barcode-lines">|||| | ||||| || |||||| | ||| | |||</div>
+                            <div class="barcode-scanner-line"></div>
+                        </div>
+                        <div class="card-flip-hint" id="card-flip-btn" title="Click to Flip Card">
+                            <span>FLIP 🔄</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Back Side -->
+                <div class="card-face card-back">
+                    <div class="card-glare"></div>
+                    <div class="card-rivet rivet-tl"></div>
+                    <div class="card-rivet rivet-tr"></div>
+                    <div class="card-rivet rivet-bl"></div>
+                    <div class="card-rivet rivet-br"></div>
+
+                    <div class="card-header-bar">
+                        <span class="card-header-title">SECURITY &amp; ACADEMIC TELEMETRY</span>
+                        <button id="card-close-btn-back" class="card-close-btn" title="Hide ID Card Sling" aria-label="Hide ID Card Sling">✕</button>
+                    </div>
+                    <div class="card-back-body">
+                        <div class="back-magnetic-strip"></div>
+                        <div class="back-details">
+                            <div class="back-detail-item">
+                                <span class="back-lbl">ID NUMBER</span>
+                                <span class="back-val">24-4918-282</span>
+                            </div>
+                            <div class="back-detail-item">
+                                <span class="back-lbl">DEPARTMENT</span>
+                                <span class="back-val">College of Engineering</span>
+                            </div>
+                            <div class="back-detail-item">
+                                <span class="back-lbl">MAJOR</span>
+                                <span class="back-val">Computer Engineering</span>
+                            </div>
+                        </div>
+                        <div class="back-qr-code">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 2h8v8H2V2zm2 2v4h4V4H4zm8-2h8v8h-8V2zm2 2v4h4V4h-4zM2 14h8v8H2v-8zm2 2v4h4v-4H4zm14 2h2v4h-2v-4zm-4-2h2v2h-2v-2zm2 2h2v2h-2v-2zm-2 2h2v2h-2v-2zm4-4h2v2h-2v-2z"/></svg>
+                        </div>
+                    </div>
+                    <div class="card-footer-bar">
+                        <span class="card-barcode-num">OFFICIAL SECURITY SEAL</span>
+                        <div class="card-flip-hint" id="card-flip-back-btn">
+                            <span>FRONT 🔄</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main>
+
+        <!-- Alex Mercer Style Hero Section (Text Left, Portrait Right, Interactive Curvy Box Matrix Canvas) -->
+        <section id="hero" class="hero-section">
+            <canvas id="hero-boxes-canvas" class="hero-grid-canvas"></canvas>
+            <div class="hero-ambient-glow"></div>
+            <div class="hero-ambient-glow-right"></div>
+            
+            <div class="section-container">
+                <div class="hero-grid">
+                    <!-- Left Column: Content, Headline, Subtext, Buttons -->
+                    <div class="hero-left-content reveal-on-scroll">
+                        <div class="hero-eyebrow" data-typewriter="true">
+                            <span class="eyebrow-dot"></span>
+                            <span>COMPUTER ENGINEERING STUDENT • DEVELOPER</span>
+                        </div>
+
+                        <h1 class="hero-main-heading" data-typewriter="true">
+                            Hello Everyone, I'm <span class="colorful-gradient-text">James</span>.
+                        </h1>
+
+                        <blockquote class="hero-quote">
+                            <div class="quote-watermark" aria-hidden="true">“</div>
+                            <p class="quote-text">
+                                “Your time is limited, so don't waste it living someone else's life. Don't be trapped by dogma which is living with the results of other people's thinking. Don't let the noise of others' opinions drown out your own inner voice. And most importantly, have the courage to follow your heart and intuition.”
+                            </p>
+                            <div class="quote-footer">
+                                <cite class="quote-author">STEVE JOBS</cite>
+                            </div>
+                        </blockquote>
+
+                        <div class="hero-cta-group">
+                            <a href="#contact" class="btn btn-primary">
+                                <span>Let's Talk</span>
+                                <svg class="btn-arrow" viewBox="0 0 24 24" fill="currentColor"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </a>
+                            <a href="#projects" class="btn btn-secondary">View Work</a>
+                        </div>
+
+                        <!-- Quick Key Stats -->
+                        <div class="hero-quick-stats">
+                            <div class="hero-stat-item">
+                                <span class="hero-stat-val">3rd Year</span>
+                                <span class="hero-stat-lbl">Year Level</span>
+                            </div>
+                            <div class="hero-stat-divider"></div>
+                            <div class="hero-stat-item">
+                                <span class="hero-stat-val">CIT-U</span>
+                                <span class="hero-stat-lbl">Institution</span>
+                            </div>
+                            <div class="hero-stat-divider"></div>
+                            <div class="hero-stat-item">
+                                <span class="hero-stat-val">BS CpE</span>
+                                <span class="hero-stat-lbl">Major Program</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Portrait Image in Glowing Grid Frame Container -->
+                    <div class="hero-right-portrait reveal-on-scroll">
+                        <div class="portrait-grid-frame" id="hero-portrait-card">
+                            <div class="frame-grid-overlay"></div>
+                            <div class="hero-frame-glare"></div>
+                            
+                            <!-- Sci-Fi HUD Corner Brackets -->
+                            <div class="frame-corner corner-tl"></div>
+                            <div class="frame-corner corner-tr"></div>
+                            <div class="frame-corner corner-bl"></div>
+                            <div class="frame-corner corner-br"></div>
+
+                            <img src="assets/frontview_transparent.png" alt="James Niño B. Mandawe Hero Portrait" class="hero-frame-img">
+                            <div class="frame-fade-overlay"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tech Stack Ticker Banner -->
+        <div class="tech-ticker-bar">
+            <div class="ticker-track">
+                <span>C PROGRAMMING</span> • 
+                <span>HTML5 &amp; CSS3</span> • 
+                <span>TAILWIND &amp; SUPABASE</span> • 
+                <span>GIT &amp; GITHUB</span> • 
+                <span>DATABASE MANAGEMENT</span> • 
+                <span>DATA STRUCTURES</span> • 
+                <span>C PROGRAMMING</span> • 
+                <span>HTML5 &amp; CSS3</span> • 
+                <span>TAILWIND &amp; SUPABASE</span> • 
+                <span>GIT &amp; GITHUB</span> • 
+                <span>DATABASE MANAGEMENT</span> • 
+                <span>DATA STRUCTURES</span>
+            </div>
+        </div>
+
+        <!-- Section 1: About Me (Alex Mercer Two-Column Style: Content Left, Photo Right) -->
+        <section id="about" class="about-section">
+            <!-- Cinematic Ambient Light & Micro Dust Canvas -->
+            <canvas id="about-canvas" class="about-bg-canvas"></canvas>
+
+            <div class="section-container">
+                <div class="about-grid">
+                    <!-- Content Left -->
+                    <div class="about-content reveal-on-scroll">
+                        <div class="section-eyebrow" data-typewriter="true"><span class="eyebrow-dash"></span> ABOUT ME</div>
+                        <h2 class="section-heading kinetic-about-heading" data-typewriter="true">Exploring Software, Hardware, and Everything In Between</h2>
+                        
+                        <p class="about-paragraph">
+                            I am <strong>James Niño B. Mandawe</strong>, a 3rd Year <span class="tech-inline-pill">Computer Engineering</span> student at Cebu Institute of Technology - University. I am passionate about technology, programming, and hardware systems.
+                        </p>
+                        <p class="about-paragraph">
+                            I enjoy discovering how software and computer hardware interact, building practical <span class="tech-inline-pill">web &amp; software applications</span>, and solving real-world engineering problems. My technical journey spans <span class="tech-inline-pill">C programming</span>, <span class="tech-inline-pill">database management</span>, <span class="tech-inline-pill">full-stack web development</span>, and modern web application development.
+                        </p>
+
+                        <!-- Highlights / Quick Stats Grid (Glassmorphic Cyber Badges) -->
+                        <div class="about-stats-grid">
+                            <div class="stat-card" data-tilt>
+                                <div class="stat-card-glare"></div>
+                                <div class="pcb-pin-strip">
+                                    <span class="pcb-pin"></span>
+                                    <span class="pcb-pin"></span>
+                                    <span class="pcb-pin"></span>
+                                </div>
+                                <span class="stat-num">3rd Year</span>
+                                <span class="stat-lbl">Year Level</span>
+                            </div>
+                            <div class="stat-card" data-tilt>
+                                <div class="stat-card-glare"></div>
+                                <div class="pcb-pin-strip">
+                                    <span class="pcb-pin"></span>
+                                    <span class="pcb-pin"></span>
+                                    <span class="pcb-pin"></span>
+                                </div>
+                                <span class="stat-num">CIT-U</span>
+                                <span class="stat-lbl">Cebu Institute of Tech</span>
+                            </div>
+                            <div class="stat-card" data-tilt>
+                                <div class="stat-card-glare"></div>
+                                <div class="pcb-pin-strip">
+                                    <span class="pcb-pin"></span>
+                                    <span class="pcb-pin"></span>
+                                    <span class="pcb-pin"></span>
+                                </div>
+                                <span class="stat-num">CpE</span>
+                                <span class="stat-lbl">Computer Engineering</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Photo Right (3D Holographic Parallax Deck) -->
+                    <div class="about-photo-column reveal-on-scroll">
+                        <div class="about-photo-card" id="about-parallax-card">
+                            <div class="photo-card-glare"></div>
+                            <div class="photo-radar-ring"></div>
+                            
+                            <!-- Sci-Fi HUD Corner Brackets & PCB Pin Strips -->
+                            <div class="photo-corner corner-tl"></div>
+                            <div class="photo-corner corner-tr"></div>
+                            <div class="photo-corner corner-bl"></div>
+                            <div class="photo-corner corner-br"></div>
+
+                            <div class="photo-pcb-header">
+                                <div class="pcb-pin-strip horizontal">
+                                    <span class="pcb-pin"></span>
+                                    <span class="pcb-pin"></span>
+                                    <span class="pcb-pin"></span>
+                                    <span class="pcb-pin"></span>
+                                    <span class="pcb-pin"></span>
+                                </div>
+                            </div>
+
+                            <div class="photo-card-inner">
+                                <img src="assets/frontview_transparent.png" alt="James Niño B. Mandawe Portrait" class="about-profile-img">
+                                <div class="photo-card-overlay">
+                                    <span class="photo-card-badge"><span class="badge-dot"></span> COMPUTER ENGINEERING</span>
+                                    <h3 class="photo-card-name">James Niño B. Mandawe</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Moving Tech Logo Boxes Showcase (Full Tech & Tools Stack Showcase) -->
+        <section id="skills" class="skills-section">
+            <canvas id="skills-fluid-canvas" class="skills-fluid-canvas"></canvas>
+            <div class="skills-fluid-glow"></div>
+
+            <div class="section-container reveal-on-scroll">
+                <div class="section-eyebrow" data-typewriter="true">TECHNICAL STACK</div>
+                <h2 class="section-heading" data-typewriter="true">Skills &amp; Technologies</h2>
+            </div>
+
+            <!-- Top Moving Tech Logo Boxes Ticker (Seamless Infinite Loop 1) -->
+            <div class="skills-ticker-wrapper top-ticker reveal-on-scroll">
+                <div class="skills-ticker-track track-forward">
+                    <!-- Set 1 -->
+                    <div class="compact-moving-box" title="C / C++"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 15c-2.76 0-5-2.24-5-5s2.24-5 5-5c1.63 0 3.06.79 3.98 2H13.8c-.46-.6-1.18-1-2-.1-1.66 0-3 1.34-3 3s1.34 3 3 3c.82 0 1.54-.4 2-.1h2.18c-.92 1.21-2.35 2-3.98 2z"/></svg></div>
+                    <div class="compact-moving-box" title="Tailwind CSS"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.336 6.182 14.975 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C7.666 17.818 9.027 19 12.001 19c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.336 13.382 8.975 12 6.001 12z"/></svg></div>
+                    <div class="compact-moving-box" title="HTML5"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 0h21l-1.91 21.563L11.97 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.236-2.679H5.414l.691 8.076h8.777l-.366 3.984-2.546.688-2.551-.692-.163-1.849H6.572l.323 3.659 5.074 1.399 5.083-1.399.711-7.972H8.531z"/></svg></div>
+                    <div class="compact-moving-box" title="CSS3"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 0h21l-1.91 21.563L11.97 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.236-2.679H5.414l.691 8.076h8.777l-.366 3.984-2.546.688-2.551-.692-.163-1.849H6.572l.323 3.659 5.074 1.399 5.083-1.399.711-7.972H8.531z"/></svg></div>
+                    <div class="compact-moving-box" title="JavaScript"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M3 3h18v18H3V3zm11.5 12.5c0-.83-.67-1.5-1.5-1.5h-1v-2h2.5V10H10v6h3c.83 0 1.5-.67 1.5-1.5zM8.5 16H10v-3.5H8.5V16z"/></svg></div>
+                    <div class="compact-moving-box" title="TypeScript"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 0h21A1.5 1.5 0 0 1 24 1.5v21a1.5 1.5 0 0 1-1.5 1.5h-21A1.5 1.5 0 0 1 0 22.5v-21A1.5 1.5 0 0 1 1.5 0zm10.27 12.96h-2.16v8.44H6.71v-8.44H4.55V10.7h7.22v2.26zm9.33 3.3c0-2.31-1.68-3.32-4.14-3.79l-1.02-.21c-.84-.17-1.18-.46-1.18-.94 0-.58.55-.91 1.43-.91.95 0 1.54.41 1.63 1.25h2.8c-.14-2.18-1.74-3.51-4.39-3.51-2.73 0-4.46 1.39-4.46 3.4 0 2.22 1.6 3.23 4.02 3.73l.97.2c.98.2 1.29.47 1.29.98 0 .61-.63.99-1.63.99-1.2 0-1.84-.49-1.97-1.42h-2.8c.17 2.37 1.94 3.63 4.79 3.63 2.92 0 4.67-1.39 4.67-3.41z"/></svg></div>
+                    <div class="compact-moving-box" title="React"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm0 4.5a7.5 7.5 0 1 1 0 15 7.5 7.5 0 0 1 0-15zm-2.25 4.5a2.25 2.25 0 1 0 4.5 0 2.25 2.25 0 0 0-4.5 0z"/></svg></div>
+                    <div class="compact-moving-box" title="Node.js"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.8l9.6 5.5v11.1L12 23.9l-9.6-5.5V7.3L12 1.8zm0 3.2L5.2 8.9v7.9L12 20.7l6.8-3.9V8.9L12 5z"/></svg></div>
+                    <div class="compact-moving-box" title="Git &amp; GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></div>
+                    <div class="compact-moving-box" title="SQL Database"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 1.79-9 4v10c0 2.21 4.03 4 9 4s9-1.79 9-4V7c0-2.21-4.03-4-9-4zm0 2c3.87 0 7 1.34 7 2s-3.13 2-7 2-7-1.34-7-2 3.13-2 7-2zm-7 5.76c1.54.76 4.14 1.24 7 1.24s5.46-.48 7-1.24V11c0 .66-3.13 2-7 2s-7-1.34-7-2V10.76zm0 5c1.54.76 4.14 1.24 7 1.24s5.46-.48 7-1.24V16c0 .66-3.13 2-7 2s-7-1.34-7-2v-.24z"/></svg></div>
+                    <!-- Set 2 -->
+                    <div class="compact-moving-box" title="C / C++"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 15c-2.76 0-5-2.24-5-5s2.24-5 5-5c1.63 0 3.06.79 3.98 2H13.8c-.46-.6-1.18-1-2-.1-1.66 0-3 1.34-3 3s1.34 3 3 3c.82 0 1.54-.4 2-.1h2.18c-.92 1.21-2.35 2-3.98 2z"/></svg></div>
+                    <div class="compact-moving-box" title="Tailwind CSS"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.336 6.182 14.975 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C7.666 17.818 9.027 19 12.001 19c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.336 13.382 8.975 12 6.001 12z"/></svg></div>
+                    <div class="compact-moving-box" title="HTML5"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 0h21l-1.91 21.563L11.97 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.236-2.679H5.414l.691 8.076h8.777l-.366 3.984-2.546.688-2.551-.692-.163-1.849H6.572l.323 3.659 5.074 1.399 5.083-1.399.711-7.972H8.531z"/></svg></div>
+                    <div class="compact-moving-box" title="CSS3"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 0h21l-1.91 21.563L11.97 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.236-2.679H5.414l.691 8.076h8.777l-.366 3.984-2.546.688-2.551-.692-.163-1.849H6.572l.323 3.659 5.074 1.399 5.083-1.399.711-7.972H8.531z"/></svg></div>
+                    <div class="compact-moving-box" title="JavaScript"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M3 3h18v18H3V3zm11.5 12.5c0-.83-.67-1.5-1.5-1.5h-1v-2h2.5V10H10v6h3c.83 0 1.5-.67 1.5-1.5zM8.5 16H10v-3.5H8.5V16z"/></svg></div>
+                    <div class="compact-moving-box" title="TypeScript"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 0h21A1.5 1.5 0 0 1 24 1.5v21a1.5 1.5 0 0 1-1.5 1.5h-21A1.5 1.5 0 0 1 0 22.5v-21A1.5 1.5 0 0 1 1.5 0zm10.27 12.96h-2.16v8.44H6.71v-8.44H4.55V10.7h7.22v2.26zm9.33 3.3c0-2.31-1.68-3.32-4.14-3.79l-1.02-.21c-.84-.17-1.18-.46-1.18-.94 0-.58.55-.91 1.43-.91.95 0 1.54.41 1.63 1.25h2.8c-.14-2.18-1.74-3.51-4.39-3.51-2.73 0-4.46 1.39-4.46 3.4 0 2.22 1.6 3.23 4.02 3.73l.97.2c.98.2 1.29.47 1.29.98 0 .61-.63.99-1.63.99-1.2 0-1.84-.49-1.97-1.42h-2.8c.17 2.37 1.94 3.63 4.79 3.63 2.92 0 4.67-1.39 4.67-3.41z"/></svg></div>
+                    <div class="compact-moving-box" title="React"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm0 4.5a7.5 7.5 0 1 1 0 15 7.5 7.5 0 0 1 0-15zm-2.25 4.5a2.25 2.25 0 1 0 4.5 0 2.25 2.25 0 0 0-4.5 0z"/></svg></div>
+                    <div class="compact-moving-box" title="Node.js"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.8l9.6 5.5v11.1L12 23.9l-9.6-5.5V7.3L12 1.8zm0 3.2L5.2 8.9v7.9L12 20.7l6.8-3.9V8.9L12 5z"/></svg></div>
+                    <div class="compact-moving-box" title="Git &amp; GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></div>
+                    <div class="compact-moving-box" title="SQL Database"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 1.79-9 4v10c0 2.21 4.03 4 9 4s9-1.79 9-4V7c0-2.21-4.03-4-9-4zm0 2c3.87 0 7 1.34 7 2s-3.13 2-7 2-7-1.34-7-2 3.13-2 7-2zm-7 5.76c1.54.76 4.14 1.24 7 1.24s5.46-.48 7-1.24V11c0 .66-3.13 2-7 2s-7-1.34-7-2V10.76zm0 5c1.54.76 4.14 1.24 7 1.24s5.46-.48 7-1.24V16c0 .66-3.13 2-7 2s-7-1.34-7-2v-.24z"/></svg></div>
+                    <!-- Set 3 -->
+                    <div class="compact-moving-box" title="C / C++"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 15c-2.76 0-5-2.24-5-5s2.24-5 5-5c1.63 0 3.06.79 3.98 2H13.8c-.46-.6-1.18-1-2-.1-1.66 0-3 1.34-3 3s1.34 3 3 3c.82 0 1.54-.4 2-.1h2.18c-.92 1.21-2.35 2-3.98 2z"/></svg></div>
+                    <div class="compact-moving-box" title="Tailwind CSS"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.336 6.182 14.975 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C7.666 17.818 9.027 19 12.001 19c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.336 13.382 8.975 12 6.001 12z"/></svg></div>
+                    <div class="compact-moving-box" title="HTML5"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 0h21l-1.91 21.563L11.97 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.236-2.679H5.414l.691 8.076h8.777l-.366 3.984-2.546.688-2.551-.692-.163-1.849H6.572l.323 3.659 5.074 1.399 5.083-1.399.711-7.972H8.531z"/></svg></div>
+                    <div class="compact-moving-box" title="CSS3"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 0h21l-1.91 21.563L11.97 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.236-2.679H5.414l.691 8.076h8.777l-.366 3.984-2.546.688-2.551-.692-.163-1.849H6.572l.323 3.659 5.074 1.399 5.083-1.399.711-7.972H8.531z"/></svg></div>
+                    <div class="compact-moving-box" title="JavaScript"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M3 3h18v18H3V3zm11.5 12.5c0-.83-.67-1.5-1.5-1.5h-1v-2h2.5V10H10v6h3c.83 0 1.5-.67 1.5-1.5zM8.5 16H10v-3.5H8.5V16z"/></svg></div>
+                    <div class="compact-moving-box" title="TypeScript"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 0h21A1.5 1.5 0 0 1 24 1.5v21a1.5 1.5 0 0 1-1.5 1.5h-21A1.5 1.5 0 0 1 0 22.5v-21A1.5 1.5 0 0 1 1.5 0zm10.27 12.96h-2.16v8.44H6.71v-8.44H4.55V10.7h7.22v2.26zm9.33 3.3c0-2.31-1.68-3.32-4.14-3.79l-1.02-.21c-.84-.17-1.18-.46-1.18-.94 0-.58.55-.91 1.43-.91.95 0 1.54.41 1.63 1.25h2.8c-.14-2.18-1.74-3.51-4.39-3.51-2.73 0-4.46 1.39-4.46 3.4 0 2.22 1.6 3.23 4.02 3.73l.97.2c.98.2 1.29.47 1.29.98 0 .61-.63.99-1.63.99-1.2 0-1.84-.49-1.97-1.42h-2.8c.17 2.37 1.94 3.63 4.79 3.63 2.92 0 4.67-1.39 4.67-3.41z"/></svg></div>
+                    <div class="compact-moving-box" title="React"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm0 4.5a7.5 7.5 0 1 1 0 15 7.5 7.5 0 0 1 0-15zm-2.25 4.5a2.25 2.25 0 1 0 4.5 0 2.25 2.25 0 0 0-4.5 0z"/></svg></div>
+                    <div class="compact-moving-box" title="Node.js"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.8l9.6 5.5v11.1L12 23.9l-9.6-5.5V7.3L12 1.8zm0 3.2L5.2 8.9v7.9L12 20.7l6.8-3.9V8.9L12 5z"/></svg></div>
+                    <div class="compact-moving-box" title="Git &amp; GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></div>
+                    <div class="compact-moving-box" title="SQL Database"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 1.79-9 4v10c0 2.21 4.03 4 9 4s9-1.79 9-4V7c0-2.21-4.03-4-9-4zm0 2c3.87 0 7 1.34 7 2s-3.13 2-7 2-7-1.34-7-2 3.13-2 7-2zm-7 5.76c1.54.76 4.14 1.24 7 1.24s5.46-.48 7-1.24V11c0 .66-3.13 2-7 2s-7-1.34-7-2V10.76zm0 5c1.54.76 4.14 1.24 7 1.24s5.46-.48 7-1.24V16c0 .66-3.13 2-7 2s-7-1.34-7-2v-.24z"/></svg></div>
+                    <!-- Set 4 -->
+                    <div class="compact-moving-box" title="C / C++"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 15c-2.76 0-5-2.24-5-5s2.24-5 5-5c1.63 0 3.06.79 3.98 2H13.8c-.46-.6-1.18-1-2-.1-1.66 0-3 1.34-3 3s1.34 3 3 3c.82 0 1.54-.4 2-.1h2.18c-.92 1.21-2.35 2-3.98 2z"/></svg></div>
+                    <div class="compact-moving-box" title="Tailwind CSS"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.336 6.182 14.975 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C7.666 17.818 9.027 19 12.001 19c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.336 13.382 8.975 12 6.001 12z"/></svg></div>
+                    <div class="compact-moving-box" title="HTML5"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 0h21l-1.91 21.563L11.97 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.236-2.679H5.414l.691 8.076h8.777l-.366 3.984-2.546.688-2.551-.692-.163-1.849H6.572l.323 3.659 5.074 1.399 5.083-1.399.711-7.972H8.531z"/></svg></div>
+                    <div class="compact-moving-box" title="CSS3"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 0h21l-1.91 21.563L11.97 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.236-2.679H5.414l.691 8.076h8.777l-.366 3.984-2.546.688-2.551-.692-.163-1.849H6.572l.323 3.659 5.074 1.399 5.083-1.399.711-7.972H8.531z"/></svg></div>
+                    <div class="compact-moving-box" title="JavaScript"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M3 3h18v18H3V3zm11.5 12.5c0-.83-.67-1.5-1.5-1.5h-1v-2h2.5V10H10v6h3c.83 0 1.5-.67 1.5-1.5zM8.5 16H10v-3.5H8.5V16z"/></svg></div>
+                    <div class="compact-moving-box" title="TypeScript"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 0h21A1.5 1.5 0 0 1 24 1.5v21a1.5 1.5 0 0 1-1.5 1.5h-21A1.5 1.5 0 0 1 0 22.5v-21A1.5 1.5 0 0 1 1.5 0zm10.27 12.96h-2.16v8.44H6.71v-8.44H4.55V10.7h7.22v2.26zm9.33 3.3c0-2.31-1.68-3.32-4.14-3.79l-1.02-.21c-.84-.17-1.18-.46-1.18-.94 0-.58.55-.91 1.43-.91.95 0 1.54.41 1.63 1.25h2.8c-.14-2.18-1.74-3.51-4.39-3.51-2.73 0-4.46 1.39-4.46 3.4 0 2.22 1.6 3.23 4.02 3.73l.97.2c.98.2 1.29.47 1.29.98 0 .61-.63.99-1.63.99-1.2 0-1.84-.49-1.97-1.42h-2.8c.17 2.37 1.94 3.63 4.79 3.63 2.92 0 4.67-1.39 4.67-3.41z"/></svg></div>
+                    <div class="compact-moving-box" title="React"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm0 4.5a7.5 7.5 0 1 1 0 15 7.5 7.5 0 0 1 0-15zm-2.25 4.5a2.25 2.25 0 1 0 4.5 0 2.25 2.25 0 0 0-4.5 0z"/></svg></div>
+                    <div class="compact-moving-box" title="Node.js"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.8l9.6 5.5v11.1L12 23.9l-9.6-5.5V7.3L12 1.8zm0 3.2L5.2 8.9v7.9L12 20.7l6.8-3.9V8.9L12 5z"/></svg></div>
+                    <div class="compact-moving-box" title="Git &amp; GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></div>
+                    <div class="compact-moving-box" title="SQL Database"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 1.79-9 4v10c0 2.21 4.03 4 9 4s9-1.79 9-4V7c0-2.21-4.03-4-9-4zm0 2c3.87 0 7 1.34 7 2s-3.13 2-7 2-7-1.34-7-2 3.13-2 7-2zm-7 5.76c1.54.76 4.14 1.24 7 1.24s5.46-.48 7-1.24V11c0 .66-3.13 2-7 2s-7-1.34-7-2V10.76zm0 5c1.54.76 4.14 1.24 7 1.24s5.46-.48 7-1.24V16c0 .66-3.13 2-7 2s-7-1.34-7-2v-.24z"/></svg></div>
+                    <!-- Set 5 -->
+                    <div class="compact-moving-box" title="C / C++"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 15c-2.76 0-5-2.24-5-5s2.24-5 5-5c1.63 0 3.06.79 3.98 2H13.8c-.46-.6-1.18-1-2-.1-1.66 0-3 1.34-3 3s1.34 3 3 3c.82 0 1.54-.4 2-.1h2.18c-.92 1.21-2.35 2-3.98 2z"/></svg></div>
+                    <div class="compact-moving-box" title="Tailwind CSS"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.336 6.182 14.975 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C7.666 17.818 9.027 19 12.001 19c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.336 13.382 8.975 12 6.001 12z"/></svg></div>
+                    <div class="compact-moving-box" title="HTML5"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 0h21l-1.91 21.563L11.97 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.236-2.679H5.414l.691 8.076h8.777l-.366 3.984-2.546.688-2.551-.692-.163-1.849H6.572l.323 3.659 5.074 1.399 5.083-1.399.711-7.972H8.531z"/></svg></div>
+                    <div class="compact-moving-box" title="CSS3"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 0h21l-1.91 21.563L11.97 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.236-2.679H5.414l.691 8.076h8.777l-.366 3.984-2.546.688-2.551-.692-.163-1.849H6.572l.323 3.659 5.074 1.399 5.083-1.399.711-7.972H8.531z"/></svg></div>
+                    <div class="compact-moving-box" title="JavaScript"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M3 3h18v18H3V3zm11.5 12.5c0-.83-.67-1.5-1.5-1.5h-1v-2h2.5V10H10v6h3c.83 0 1.5-.67 1.5-1.5zM8.5 16H10v-3.5H8.5V16z"/></svg></div>
+                    <div class="compact-moving-box" title="TypeScript"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 0h21A1.5 1.5 0 0 1 24 1.5v21a1.5 1.5 0 0 1-1.5 1.5h-21A1.5 1.5 0 0 1 0 22.5v-21A1.5 1.5 0 0 1 1.5 0zm10.27 12.96h-2.16v8.44H6.71v-8.44H4.55V10.7h7.22v2.26zm9.33 3.3c0-2.31-1.68-3.32-4.14-3.79l-1.02-.21c-.84-.17-1.18-.46-1.18-.94 0-.58.55-.91 1.43-.91.95 0 1.54.41 1.63 1.25h2.8c-.14-2.18-1.74-3.51-4.39-3.51-2.73 0-4.46 1.39-4.46 3.4 0 2.22 1.6 3.23 4.02 3.73l.97.2c.98.2 1.29.47 1.29.98 0 .61-.63.99-1.63.99-1.2 0-1.84-.49-1.97-1.42h-2.8c.17 2.37 1.94 3.63 4.79 3.63 2.92 0 4.67-1.39 4.67-3.41z"/></svg></div>
+                    <div class="compact-moving-box" title="React"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm0 4.5a7.5 7.5 0 1 1 0 15 7.5 7.5 0 0 1 0-15zm-2.25 4.5a2.25 2.25 0 1 0 4.5 0 2.25 2.25 0 0 0-4.5 0z"/></svg></div>
+                    <div class="compact-moving-box" title="Node.js"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.8l9.6 5.5v11.1L12 23.9l-9.6-5.5V7.3L12 1.8zm0 3.2L5.2 8.9v7.9L12 20.7l6.8-3.9V8.9L12 5z"/></svg></div>
+                    <div class="compact-moving-box" title="Git &amp; GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></div>
+                    <div class="compact-moving-box" title="SQL Database"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 1.79-9 4v10c0 2.21 4.03 4 9 4s9-1.79 9-4V7c0-2.21-4.03-4-9-4zm0 2c3.87 0 7 1.34 7 2s-3.13 2-7 2-7-1.34-7-2 3.13-2 7-2zm-7 5.76c1.54.76 4.14 1.24 7 1.24s5.46-.48 7-1.24V11c0 .66-3.13 2-7 2s-7-1.34-7-2V10.76zm0 5c1.54.76 4.14 1.24 7 1.24s5.46-.48 7-1.24V16c0 .66-3.13 2-7 2s-7-1.34-7-2v-.24z"/></svg></div>
+                    <!-- Set 6 -->
+                    <div class="compact-moving-box" title="C / C++"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 15c-2.76 0-5-2.24-5-5s2.24-5 5-5c1.63 0 3.06.79 3.98 2H13.8c-.46-.6-1.18-1-2-.1-1.66 0-3 1.34-3 3s1.34 3 3 3c.82 0 1.54-.4 2-.1h2.18c-.92 1.21-2.35 2-3.98 2z"/></svg></div>
+                    <div class="compact-moving-box" title="Tailwind CSS"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.336 6.182 14.975 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C7.666 17.818 9.027 19 12.001 19c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.336 13.382 8.975 12 6.001 12z"/></svg></div>
+                    <div class="compact-moving-box" title="HTML5"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 0h21l-1.91 21.563L11.97 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.236-2.679H5.414l.691 8.076h8.777l-.366 3.984-2.546.688-2.551-.692-.163-1.849H6.572l.323 3.659 5.074 1.399 5.083-1.399.711-7.972H8.531z"/></svg></div>
+                    <div class="compact-moving-box" title="CSS3"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 0h21l-1.91 21.563L11.97 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.236-2.679H5.414l.691 8.076h8.777l-.366 3.984-2.546.688-2.551-.692-.163-1.849H6.572l.323 3.659 5.074 1.399 5.083-1.399.711-7.972H8.531z"/></svg></div>
+                    <div class="compact-moving-box" title="JavaScript"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M3 3h18v18H3V3zm11.5 12.5c0-.83-.67-1.5-1.5-1.5h-1v-2h2.5V10H10v6h3c.83 0 1.5-.67 1.5-1.5zM8.5 16H10v-3.5H8.5V16z"/></svg></div>
+                    <div class="compact-moving-box" title="TypeScript"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 0h21A1.5 1.5 0 0 1 24 1.5v21a1.5 1.5 0 0 1-1.5 1.5h-21A1.5 1.5 0 0 1 0 22.5v-21A1.5 1.5 0 0 1 1.5 0zm10.27 12.96h-2.16v8.44H6.71v-8.44H4.55V10.7h7.22v2.26zm9.33 3.3c0-2.31-1.68-3.32-4.14-3.79l-1.02-.21c-.84-.17-1.18-.46-1.18-.94 0-.58.55-.91 1.43-.91.95 0 1.54.41 1.63 1.25h2.8c-.14-2.18-1.74-3.51-4.39-3.51-2.73 0-4.46 1.39-4.46 3.4 0 2.22 1.6 3.23 4.02 3.73l.97.2c.98.2 1.29.47 1.29.98 0 .61-.63.99-1.63.99-1.2 0-1.84-.49-1.97-1.42h-2.8c.17 2.37 1.94 3.63 4.79 3.63 2.92 0 4.67-1.39 4.67-3.41z"/></svg></div>
+                    <div class="compact-moving-box" title="React"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm0 4.5a7.5 7.5 0 1 1 0 15 7.5 7.5 0 0 1 0-15zm-2.25 4.5a2.25 2.25 0 1 0 4.5 0 2.25 2.25 0 0 0-4.5 0z"/></svg></div>
+                    <div class="compact-moving-box" title="Node.js"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.8l9.6 5.5v11.1L12 23.9l-9.6-5.5V7.3L12 1.8zm0 3.2L5.2 8.9v7.9L12 20.7l6.8-3.9V8.9L12 5z"/></svg></div>
+                    <div class="compact-moving-box" title="Git &amp; GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></div>
+                    <div class="compact-moving-box" title="SQL Database"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 1.79-9 4v10c0 2.21 4.03 4 9 4s9-1.79 9-4V7c0-2.21-4.03-4-9-4zm0 2c3.87 0 7 1.34 7 2s-3.13 2-7 2-7-1.34-7-2 3.13-2 7-2zm-7 5.76c1.54.76 4.14 1.24 7 1.24s5.46-.48 7-1.24V11c0 .66-3.13 2-7 2s-7-1.34-7-2V10.76zm0 5c1.54.76 4.14 1.24 7 1.24s5.46-.48 7-1.24V16c0 .66-3.13 2-7 2s-7-1.34-7-2v-.24z"/></svg></div>
+                </div>
+            </div>
+
+            <!-- Structured Branching Skill Network Layout (Where Real Skills Are Placed) -->
+            <div class="skills-tree-wrapper section-container reveal-on-scroll">
+                <div class="tree-branches-grid">
+
+                    <!-- Branch 1: Low-Level Systems & Core -->
+                    <div class="tree-branch-card" data-branch="systems">
+                        <div class="branch-header">
+                            <span class="branch-icon">⚡</span>
+                            <span class="branch-name">SYSTEMS &amp; CORE PROGRAMMING</span>
+                        </div>
+                        <div class="branch-nodes-list">
+                            <div class="compact-skill-node">
+                                <div class="node-logo-icon">
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 15c-2.76 0-5-2.24-5-5s2.24-5 5-5c1.63 0 3.06.79 3.98 2H13.8c-.46-.6-1.18-1-2-.1-1.66 0-3 1.34-3 3s1.34 3 3 3c.82 0 1.54-.4 2-.1h2.18c-.92 1.21-2.35 2-3.98 2z"/></svg>
+                                </div>
+                                <div class="node-text">
+                                    <span class="node-title">C &amp; C++ Language</span>
+                                    <span class="node-desc">Low-Level Memory &amp; Systems</span>
+                                </div>
+                            </div>
+
+                            <div class="compact-skill-node">
+                                <div class="node-logo-icon">
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 15c-2.76 0-5-2.24-5-5s2.24-5 5-5c1.63 0 3.06.79 3.98 2H13.8c-.46-.6-1.18-1-2-.1-1.66 0-3 1.34-3 3s1.34 3 3 3c.82 0 1.54-.4 2-.1h2.18c-.92 1.21-2.35 2-3.98 2z"/></svg>
+                                </div>
+                                <div class="node-text">
+                                    <span class="node-title">Python Programming</span>
+                                    <span class="node-desc">Scripting &amp; Data Processing</span>
+                                </div>
+                            </div>
+
+                            <div class="compact-skill-node">
+                                <div class="node-logo-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="3" x2="6" y2="15"></line><circle cx="18" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><path d="M18 9a9 9 0 0 1-9 9"></path></svg>
+                                </div>
+                                <div class="node-text">
+                                    <span class="node-title">Data Structures &amp; OOP</span>
+                                    <span class="node-desc">Algorithms &amp; Memory Logic</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Branch 2: Developer Tools & UI Frameworks -->
+                    <div class="tree-branch-card" data-branch="desktop">
+                        <div class="branch-header">
+                            <span class="branch-icon">💻</span>
+                            <span class="branch-name">DEVELOPER &amp; UI FRAMEWORKS</span>
+                        </div>
+                        <div class="branch-nodes-list">
+                            <div class="compact-skill-node">
+                                <div class="node-logo-icon">
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.336 6.182 14.975 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C7.666 17.818 9.027 19 12.001 19c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.336 13.382 8.975 12 6.001 12z"/></svg>
+                                </div>
+                                <div class="node-text">
+                                    <span class="node-title">Tailwind CSS &amp; UI</span>
+                                    <span class="node-desc">Utility-First Modern Styling</span>
+                                </div>
+                            </div>
+
+                            <div class="compact-skill-node">
+                                <div class="node-logo-icon">
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.15 2.587L18.21.21a1.49 1.49 0 0 0-1.705.29l-9.46 8.63-4.12-3.12a.75.75 0 0 0-.96.06L.265 7.625a.75.75 0 0 0 .045 1.09l4.98 4.25-4.98 4.25a.75.75 0 0 0-.045 1.09l1.7 1.555a.75.75 0 0 0 .96.06l4.12-3.12 9.46 8.63a1.49 1.49 0 0 0 1.705.29l4.94-2.377A1.5 1.5 0 0 0 24 22.125V3.875a1.5 1.5 0 0 0-.85-1.288z"/></svg>
+                                </div>
+                                <div class="node-text">
+                                    <span class="node-title">VS Code &amp; Visual Studio</span>
+                                    <span class="node-desc">IDEs &amp; Debugging Tools</span>
+                                </div>
+                            </div>
+
+                            <div class="compact-skill-node">
+                                <div class="node-logo-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 17 22 12"></polyline></svg>
+                                </div>
+                                <div class="node-text">
+                                    <span class="node-title">Vercel &amp; Figma</span>
+                                    <span class="node-desc">Deployment &amp; UI/UX Mockups</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Branch 3: Web & Frontend UI -->
+                    <div class="tree-branch-card" data-branch="web">
+                        <div class="branch-header">
+                            <span class="branch-icon">🌐</span>
+                            <span class="branch-name">WEB &amp; FRONTEND DEVELOPMENT</span>
+                        </div>
+                        <div class="branch-nodes-list">
+                            <div class="compact-skill-node">
+                                <div class="node-logo-icon">
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 0h21l-1.91 21.563L11.97 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.236-2.679H5.414l.691 8.076h8.777l-.366 3.984-2.546.688-2.551-.692-.163-1.849H6.572l.323 3.659 5.074 1.399 5.083-1.399.711-7.972H8.531z"/></svg>
+                                </div>
+                                <div class="node-text">
+                                    <span class="node-title">HTML5 &amp; CSS3</span>
+                                    <span class="node-desc">Responsive Layouts &amp; Styling</span>
+                                </div>
+                            </div>
+
+                            <div class="compact-skill-node">
+                                <div class="node-logo-icon">
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M3 3h18v18H3V3zm11.5 12.5c0-.83-.67-1.5-1.5-1.5h-1v-2h2.5V10H10v6h3c.83 0 1.5-.67 1.5-1.5zM8.5 16H10v-3.5H8.5V16z"/></svg>
+                                </div>
+                                <div class="node-text">
+                                    <span class="node-title">JavaScript &amp; TypeScript</span>
+                                    <span class="node-desc">Interactivity &amp; Type Safety</span>
+                                </div>
+                            </div>
+
+                            <div class="compact-skill-node">
+                                <div class="node-logo-icon">
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm0 4.5a7.5 7.5 0 1 1 0 15 7.5 7.5 0 0 1 0-15zm-2.25 4.5a2.25 2.25 0 1 0 4.5 0 2.25 2.25 0 0 0-4.5 0z"/></svg>
+                                </div>
+                                <div class="node-text">
+                                    <span class="node-title">React &amp; Vite</span>
+                                    <span class="node-desc">Modern UI Framework &amp; Tooling</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Branch 4: Backend, Database & Version Control -->
+                    <div class="tree-branch-card" data-branch="database">
+                        <div class="branch-header">
+                            <span class="branch-icon">🗄️</span>
+                            <span class="branch-name">BACKEND, DATABASE &amp; GIT</span>
+                        </div>
+                        <div class="branch-nodes-list">
+                            <div class="compact-skill-node">
+                                <div class="node-logo-icon">
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.8l9.6 5.5v11.1L12 23.9l-9.6-5.5V7.3L12 1.8zm0 3.2L5.2 8.9v7.9L12 20.7l6.8-3.9V8.9L12 5z"/></svg>
+                                </div>
+                                <div class="node-text">
+                                    <span class="node-title">Node.js Runtime</span>
+                                    <span class="node-desc">Server-Side JavaScript Systems</span>
+                                </div>
+                            </div>
+
+                            <div class="compact-skill-node">
+                                <div class="node-logo-icon">
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 1.79-9 4v10c0 2.21 4.03 4 9 4s9-1.79 9-4V7c0-2.21-4.03-4-9-4zm0 2c3.87 0 7 1.34 7 2s-3.13 2-7 2-7-1.34-7-2 3.13-2 7-2zm-7 5.76c1.54.76 4.14 1.24 7 1.24s5.46-.48 7-1.24V11c0 .66-3.13 2-7 2s-7-1.34-7-2V10.76zm0 5c1.54.76 4.14 1.24 7 1.24s5.46-.48 7-1.24V16c0 .66-3.13 2-7 2s-7-1.34-7-2v-.24z"/></svg>
+                                </div>
+                                <div class="node-text">
+                                    <span class="node-title">SQL Database</span>
+                                    <span class="node-desc">Relational Tables &amp; Queries</span>
+                                </div>
+                            </div>
+
+                            <div class="compact-skill-node">
+                                <div class="node-logo-icon">
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                                </div>
+                                <div class="node-text">
+                                    <span class="node-title">Git &amp; GitHub</span>
+                                    <span class="node-desc">Repository &amp; Version Control</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Bottom Moving Tech Logo Boxes Ticker (Seamless Infinite Loop 2 - Below Skills Grid) -->
+            <div class="skills-ticker-wrapper bottom-ticker reveal-on-scroll">
+                <div class="skills-ticker-track track-backward">
+                    <!-- Set 1 -->
+                    <div class="compact-moving-box" title="C / C++"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 15c-2.76 0-5-2.24-5-5s2.24-5 5-5c1.63 0 3.06.79 3.98 2H13.8c-.46-.6-1.18-1-2-.1-1.66 0-3 1.34-3 3s1.34 3 3 3c.82 0 1.54-.4 2-.1h2.18c-.92 1.21-2.35 2-3.98 2z"/></svg></div>
+                    <div class="compact-moving-box" title="Tailwind CSS"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.336 6.182 14.975 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C7.666 17.818 9.027 19 12.001 19c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.336 13.382 8.975 12 6.001 12z"/></svg></div>
+                    <div class="compact-moving-box" title="HTML5"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 0h21l-1.91 21.563L11.97 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.236-2.679H5.414l.691 8.076h8.777l-.366 3.984-2.546.688-2.551-.692-.163-1.849H6.572l.323 3.659 5.074 1.399 5.083-1.399.711-7.972H8.531z"/></svg></div>
+                    <div class="compact-moving-box" title="CSS3"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 0h21l-1.91 21.563L11.97 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.236-2.679H5.414l.691 8.076h8.777l-.366 3.984-2.546.688-2.551-.692-.163-1.849H6.572l.323 3.659 5.074 1.399 5.083-1.399.711-7.972H8.531z"/></svg></div>
+                    <div class="compact-moving-box" title="JavaScript"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M3 3h18v18H3V3zm11.5 12.5c0-.83-.67-1.5-1.5-1.5h-1v-2h2.5V10H10v6h3c.83 0 1.5-.67 1.5-1.5zM8.5 16H10v-3.5H8.5V16z"/></svg></div>
+                    <div class="compact-moving-box" title="TypeScript"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 0h21A1.5 1.5 0 0 1 24 1.5v21a1.5 1.5 0 0 1-1.5 1.5h-21A1.5 1.5 0 0 1 0 22.5v-21A1.5 1.5 0 0 1 1.5 0zm10.27 12.96h-2.16v8.44H6.71v-8.44H4.55V10.7h7.22v2.26zm9.33 3.3c0-2.31-1.68-3.32-4.14-3.79l-1.02-.21c-.84-.17-1.18-.46-1.18-.94 0-.58.55-.91 1.43-.91.95 0 1.54.41 1.63 1.25h2.8c-.14-2.18-1.74-3.51-4.39-3.51-2.73 0-4.46 1.39-4.46 3.4 0 2.22 1.6 3.23 4.02 3.73l.97.2c.98.2 1.29.47 1.29.98 0 .61-.63.99-1.63.99-1.2 0-1.84-.49-1.97-1.42h-2.8c.17 2.37 1.94 3.63 4.79 3.63 2.92 0 4.67-1.39 4.67-3.41z"/></svg></div>
+                    <div class="compact-moving-box" title="React"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm0 4.5a7.5 7.5 0 1 1 0 15 7.5 7.5 0 0 1 0-15zm-2.25 4.5a2.25 2.25 0 1 0 4.5 0 2.25 2.25 0 0 0-4.5 0z"/></svg></div>
+                    <div class="compact-moving-box" title="Node.js"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.8l9.6 5.5v11.1L12 23.9l-9.6-5.5V7.3L12 1.8zm0 3.2L5.2 8.9v7.9L12 20.7l6.8-3.9V8.9L12 5z"/></svg></div>
+                    <div class="compact-moving-box" title="Git &amp; GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></div>
+                    <div class="compact-moving-box" title="SQL Database"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 1.79-9 4v10c0 2.21 4.03 4 9 4s9-1.79 9-4V7c0-2.21-4.03-4-9-4zm0 2c3.87 0 7 1.34 7 2s-3.13 2-7 2-7-1.34-7-2 3.13-2 7-2zm-7 5.76c1.54.76 4.14 1.24 7 1.24s5.46-.48 7-1.24V11c0 .66-3.13 2-7 2s-7-1.34-7-2V10.76zm0 5c1.54.76 4.14 1.24 7 1.24s5.46-.48 7-1.24V16c0 .66-3.13 2-7 2s-7-1.34-7-2v-.24z"/></svg></div>
+                    <!-- Set 2 -->
+                    <div class="compact-moving-box" title="C / C++"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 15c-2.76 0-5-2.24-5-5s2.24-5 5-5c1.63 0 3.06.79 3.98 2H13.8c-.46-.6-1.18-1-2-.1-1.66 0-3 1.34-3 3s1.34 3 3 3c.82 0 1.54-.4 2-.1h2.18c-.92 1.21-2.35 2-3.98 2z"/></svg></div>
+                    <div class="compact-moving-box" title="Tailwind CSS"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.336 6.182 14.975 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C7.666 17.818 9.027 19 12.001 19c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.336 13.382 8.975 12 6.001 12z"/></svg></div>
+                    <div class="compact-moving-box" title="HTML5"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 0h21l-1.91 21.563L11.97 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.236-2.679H5.414l.691 8.076h8.777l-.366 3.984-2.546.688-2.551-.692-.163-1.849H6.572l.323 3.659 5.074 1.399 5.083-1.399.711-7.972H8.531z"/></svg></div>
+                    <div class="compact-moving-box" title="CSS3"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 0h21l-1.91 21.563L11.97 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.236-2.679H5.414l.691 8.076h8.777l-.366 3.984-2.546.688-2.551-.692-.163-1.849H6.572l.323 3.659 5.074 1.399 5.083-1.399.711-7.972H8.531z"/></svg></div>
+                    <div class="compact-moving-box" title="JavaScript"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M3 3h18v18H3V3zm11.5 12.5c0-.83-.67-1.5-1.5-1.5h-1v-2h2.5V10H10v6h3c.83 0 1.5-.67 1.5-1.5zM8.5 16H10v-3.5H8.5V16z"/></svg></div>
+                    <div class="compact-moving-box" title="TypeScript"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 0h21A1.5 1.5 0 0 1 24 1.5v21a1.5 1.5 0 0 1-1.5 1.5h-21A1.5 1.5 0 0 1 0 22.5v-21A1.5 1.5 0 0 1 1.5 0zm10.27 12.96h-2.16v8.44H6.71v-8.44H4.55V10.7h7.22v2.26zm9.33 3.3c0-2.31-1.68-3.32-4.14-3.79l-1.02-.21c-.84-.17-1.18-.46-1.18-.94 0-.58.55-.91 1.43-.91.95 0 1.54.41 1.63 1.25h2.8c-.14-2.18-1.74-3.51-4.39-3.51-2.73 0-4.46 1.39-4.46 3.4 0 2.22 1.6 3.23 4.02 3.73l.97.2c.98.2 1.29.47 1.29.98 0 .61-.63.99-1.63.99-1.2 0-1.84-.49-1.97-1.42h-2.8c.17 2.37 1.94 3.63 4.79 3.63 2.92 0 4.67-1.39 4.67-3.41z"/></svg></div>
+                    <div class="compact-moving-box" title="React"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm0 4.5a7.5 7.5 0 1 1 0 15 7.5 7.5 0 0 1 0-15zm-2.25 4.5a2.25 2.25 0 1 0 4.5 0 2.25 2.25 0 0 0-4.5 0z"/></svg></div>
+                    <div class="compact-moving-box" title="Node.js"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.8l9.6 5.5v11.1L12 23.9l-9.6-5.5V7.3L12 1.8zm0 3.2L5.2 8.9v7.9L12 20.7l6.8-3.9V8.9L12 5z"/></svg></div>
+                    <div class="compact-moving-box" title="Git &amp; GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></div>
+                    <div class="compact-moving-box" title="SQL Database"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 1.79-9 4v10c0 2.21 4.03 4 9 4s9-1.79 9-4V7c0-2.21-4.03-4-9-4zm0 2c3.87 0 7 1.34 7 2s-3.13 2-7 2-7-1.34-7-2 3.13-2 7-2zm-7 5.76c1.54.76 4.14 1.24 7 1.24s5.46-.48 7-1.24V11c0 .66-3.13 2-7 2s-7-1.34-7-2V10.76zm0 5c1.54.76 4.14 1.24 7 1.24s5.46-.48 7-1.24V16c0 .66-3.13 2-7 2s-7-1.34-7-2v-.24z"/></svg></div>
+                    <!-- Set 3 -->
+                    <div class="compact-moving-box" title="C / C++"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 15c-2.76 0-5-2.24-5-5s2.24-5 5-5c1.63 0 3.06.79 3.98 2H13.8c-.46-.6-1.18-1-2-.1-1.66 0-3 1.34-3 3s1.34 3 3 3c.82 0 1.54-.4 2-.1h2.18c-.92 1.21-2.35 2-3.98 2z"/></svg></div>
+                    <div class="compact-moving-box" title="Tailwind CSS"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.336 6.182 14.975 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C7.666 17.818 9.027 19 12.001 19c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.336 13.382 8.975 12 6.001 12z"/></svg></div>
+                    <div class="compact-moving-box" title="HTML5"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 0h21l-1.91 21.563L11.97 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.236-2.679H5.414l.691 8.076h8.777l-.366 3.984-2.546.688-2.551-.692-.163-1.849H6.572l.323 3.659 5.074 1.399 5.083-1.399.711-7.972H8.531z"/></svg></div>
+                    <div class="compact-moving-box" title="CSS3"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 0h21l-1.91 21.563L11.97 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.236-2.679H5.414l.691 8.076h8.777l-.366 3.984-2.546.688-2.551-.692-.163-1.849H6.572l.323 3.659 5.074 1.399 5.083-1.399.711-7.972H8.531z"/></svg></div>
+                    <div class="compact-moving-box" title="JavaScript"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M3 3h18v18H3V3zm11.5 12.5c0-.83-.67-1.5-1.5-1.5h-1v-2h2.5V10H10v6h3c.83 0 1.5-.67 1.5-1.5zM8.5 16H10v-3.5H8.5V16z"/></svg></div>
+                    <div class="compact-moving-box" title="HTML5"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 0h21l-1.91 21.563L11.97 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.236-2.679H5.414l.691 8.076h8.777l-.366 3.984-2.546.688-2.551-.692-.163-1.849H6.572l.323 3.659 5.074 1.399 5.083-1.399.711-7.972H8.531z"/></svg></div>
+                    <div class="compact-moving-box" title="CSS3"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 0h21l-1.91 21.563L11.97 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.236-2.679H5.414l.691 8.076h8.777l-.366 3.984-2.546.688-2.551-.692-.163-1.849H6.572l.323 3.659 5.074 1.399 5.083-1.399.711-7.972H8.531z"/></svg></div>
+                    <div class="compact-moving-box" title="JavaScript"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M3 3h18v18H3V3zm11.5 12.5c0-.83-.67-1.5-1.5-1.5h-1v-2h2.5V10H10v6h3c.83 0 1.5-.67 1.5-1.5zM8.5 16H10v-3.5H8.5V16z"/></svg></div>
+                    <div class="compact-moving-box" title="TypeScript"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 0h21A1.5 1.5 0 0 1 24 1.5v21a1.5 1.5 0 0 1-1.5 1.5h-21A1.5 1.5 0 0 1 0 22.5v-21A1.5 1.5 0 0 1 1.5 0zm10.27 12.96h-2.16v8.44H6.71v-8.44H4.55V10.7h7.22v2.26zm9.33 3.3c0-2.31-1.68-3.32-4.14-3.79l-1.02-.21c-.84-.17-1.18-.46-1.18-.94 0-.58.55-.91 1.43-.91.95 0 1.54.41 1.63 1.25h2.8c-.14-2.18-1.74-3.51-4.39-3.51-2.73 0-4.46 1.39-4.46 3.4 0 2.22 1.6 3.23 4.02 3.73l.97.2c.98.2 1.29.47 1.29.98 0 .61-.63.99-1.63.99-1.2 0-1.84-.49-1.97-1.42h-2.8c.17 2.37 1.94 3.63 4.79 3.63 2.92 0 4.67-1.39 4.67-3.41z"/></svg></div>
+                    <div class="compact-moving-box" title="React"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm0 4.5a7.5 7.5 0 1 1 0 15 7.5 7.5 0 0 1 0-15zm-2.25 4.5a2.25 2.25 0 1 0 4.5 0 2.25 2.25 0 0 0-4.5 0z"/></svg></div>
+                    <div class="compact-moving-box" title="Node.js"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.8l9.6 5.5v11.1L12 23.9l-9.6-5.5V7.3L12 1.8zm0 3.2L5.2 8.9v7.9L12 20.7l6.8-3.9V8.9L12 5z"/></svg></div>
+                    <div class="compact-moving-box" title="Git &amp; GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></div>
+                    <div class="compact-moving-box" title="SQL Database"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 1.79-9 4v10c0 2.21 4.03 4 9 4s9-1.79 9-4V7c0-2.21-4.03-4-9-4zm0 2c3.87 0 7 1.34 7 2s-3.13 2-7 2-7-1.34-7-2 3.13-2 7-2zm-7 5.76c1.54.76 4.14 1.24 7 1.24s5.46-.48 7-1.24V11c0 .66-3.13 2-7 2s-7-1.34-7-2V10.76zm0 5c1.54.76 4.14 1.24 7 1.24s5.46-.48 7-1.24V16c0 .66-3.13 2-7 2s-7-1.34-7-2v-.24z"/></svg></div>
+                    <!-- Set 3 -->
+                    <div class="compact-moving-box" title="C / C++"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 15c-2.76 0-5-2.24-5-5s2.24-5 5-5c1.63 0 3.06.79 3.98 2H13.8c-.46-.6-1.18-1-2-.1-1.66 0-3 1.34-3 3s1.34 3 3 3c.82 0 1.54-.4 2-.1h2.18c-.92 1.21-2.35 2-3.98 2z"/></svg></div>
+                    <div class="compact-moving-box" title="Tailwind CSS"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.336 6.182 14.975 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C7.666 17.818 9.027 19 12.001 19c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.336 13.382 8.975 12 6.001 12z"/></svg></div>
+                    <div class="compact-moving-box" title="HTML5"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 0h21l-1.91 21.563L11.97 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.236-2.679H5.414l.691 8.076h8.777l-.366 3.984-2.546.688-2.551-.692-.163-1.849H6.572l.323 3.659 5.074 1.399 5.083-1.399.711-7.972H8.531z"/></svg></div>
+                    <div class="compact-moving-box" title="CSS3"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 0h21l-1.91 21.563L11.97 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.236-2.679H5.414l.691 8.076h8.777l-.366 3.984-2.546.688-2.551-.692-.163-1.849H6.572l.323 3.659 5.074 1.399 5.083-1.399.711-7.972H8.531z"/></svg></div>
+                    <div class="compact-moving-box" title="JavaScript"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M3 3h18v18H3V3zm11.5 12.5c0-.83-.67-1.5-1.5-1.5h-1v-2h2.5V10H10v6h3c.83 0 1.5-.67 1.5-1.5zM8.5 16H10v-3.5H8.5V16z"/></svg></div>
+                    <div class="compact-moving-box" title="TypeScript"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 0h21A1.5 1.5 0 0 1 24 1.5v21a1.5 1.5 0 0 1-1.5 1.5h-21A1.5 1.5 0 0 1 0 22.5v-21A1.5 1.5 0 0 1 1.5 0zm10.27 12.96h-2.16v8.44H6.71v-8.44H4.55V10.7h7.22v2.26zm9.33 3.3c0-2.31-1.68-3.32-4.14-3.79l-1.02-.21c-.84-.17-1.18-.46-1.18-.94 0-.58.55-.91 1.43-.91.95 0 1.54.41 1.63 1.25h2.8c-.14-2.18-1.74-3.51-4.39-3.51-2.73 0-4.46 1.39-4.46 3.4 0 2.22 1.6 3.23 4.02 3.73l.97.2c.98.2 1.29.47 1.29.98 0 .61-.63.99-1.63.99-1.2 0-1.84-.49-1.97-1.42h-2.8c.17 2.37 1.94 3.63 4.79 3.63 2.92 0 4.67-1.39 4.67-3.41z"/></svg></div>
+                    <div class="compact-moving-box" title="React"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm0 4.5a7.5 7.5 0 1 1 0 15 7.5 7.5 0 0 1 0-15zm-2.25 4.5a2.25 2.25 0 1 0 4.5 0 2.25 2.25 0 0 0-4.5 0z"/></svg></div>
+                    <div class="compact-moving-box" title="Node.js"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.8l9.6 5.5v11.1L12 23.9l-9.6-5.5V7.3L12 1.8zm0 3.2L5.2 8.9v7.9L12 20.7l6.8-3.9V8.9L12 5z"/></svg></div>
+                    <div class="compact-moving-box" title="Git &amp; GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></div>
+                    <div class="compact-moving-box" title="SQL Database"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 1.79-9 4v10c0 2.21 4.03 4 9 4s9-1.79 9-4V7c0-2.21-4.03-4-9-4zm0 2c3.87 0 7 1.34 7 2s-3.13 2-7 2-7-1.34-7-2 3.13-2 7-2zm-7 5.76c1.54.76 4.14 1.24 7 1.24s5.46-.48 7-1.24V11c0 .66-3.13 2-7 2s-7-1.34-7-2V10.76zm0 5c1.54.76 4.14 1.24 7 1.24s5.46-.48 7-1.24V16c0 .66-3.13 2-7 2s-7-1.34-7-2v-.24z"/></svg></div>
+                    <!-- Set 4 -->
+                    <div class="compact-moving-box" title="C / C++"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 15c-2.76 0-5-2.24-5-5s2.24-5 5-5c1.63 0 3.06.79 3.98 2H13.8c-.46-.6-1.18-1-2-.1-1.66 0-3 1.34-3 3s1.34 3 3 3c.82 0 1.54-.4 2-.1h2.18c-.92 1.21-2.35 2-3.98 2z"/></svg></div>
+                    <div class="compact-moving-box" title="Tailwind CSS"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.336 6.182 14.975 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C7.666 17.818 9.027 19 12.001 19c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.336 13.382 8.975 12 6.001 12z"/></svg></div>
+                    <div class="compact-moving-box" title="HTML5"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 0h21l-1.91 21.563L11.97 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.236-2.679H5.414l.691 8.076h8.777l-.366 3.984-2.546.688-2.551-.692-.163-1.849H6.572l.323 3.659 5.074 1.399 5.083-1.399.711-7.972H8.531z"/></svg></div>
+                    <div class="compact-moving-box" title="CSS3"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 0h21l-1.91 21.563L11.97 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.236-2.679H5.414l.691 8.076h8.777l-.366 3.984-2.546.688-2.551-.692-.163-1.849H6.572l.323 3.659 5.074 1.399 5.083-1.399.711-7.972H8.531z"/></svg></div>
+                    <div class="compact-moving-box" title="JavaScript"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M3 3h18v18H3V3zm11.5 12.5c0-.83-.67-1.5-1.5-1.5h-1v-2h2.5V10H10v6h3c.83 0 1.5-.67 1.5-1.5zM8.5 16H10v-3.5H8.5V16z"/></svg></div>
+                    <div class="compact-moving-box" title="TypeScript"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 0h21A1.5 1.5 0 0 1 24 1.5v21a1.5 1.5 0 0 1-1.5 1.5h-21A1.5 1.5 0 0 1 0 22.5v-21A1.5 1.5 0 0 1 1.5 0zm10.27 12.96h-2.16v8.44H6.71v-8.44H4.55V10.7h7.22v2.26zm9.33 3.3c0-2.31-1.68-3.32-4.14-3.79l-1.02-.21c-.84-.17-1.18-.46-1.18-.94 0-.58.55-.91 1.43-.91.95 0 1.54.41 1.63 1.25h2.8c-.14-2.18-1.74-3.51-4.39-3.51-2.73 0-4.46 1.39-4.46 3.4 0 2.22 1.6 3.23 4.02 3.73l.97.2c.98.2 1.29.47 1.29.98 0 .61-.63.99-1.63.99-1.2 0-1.84-.49-1.97-1.42h-2.8c.17 2.37 1.94 3.63 4.79 3.63 2.92 0 4.67-1.39 4.67-3.41z"/></svg></div>
+                    <div class="compact-moving-box" title="React"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm0 4.5a7.5 7.5 0 1 1 0 15 7.5 7.5 0 0 1 0-15zm-2.25 4.5a2.25 2.25 0 1 0 4.5 0 2.25 2.25 0 0 0-4.5 0z"/></svg></div>
+                    <div class="compact-moving-box" title="Node.js"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.8l9.6 5.5v11.1L12 23.9l-9.6-5.5V7.3L12 1.8zm0 3.2L5.2 8.9v7.9L12 20.7l6.8-3.9V8.9L12 5z"/></svg></div>
+                    <div class="compact-moving-box" title="Git &amp; GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></div>
+                    <div class="compact-moving-box" title="SQL Database"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 1.79-9 4v10c0 2.21 4.03 4 9 4s9-1.79 9-4V7c0-2.21-4.03-4-9-4zm0 2c3.87 0 7 1.34 7 2s-3.13 2-7 2-7-1.34-7-2 3.13-2 7-2zm-7 5.76c1.54.76 4.14 1.24 7 1.24s5.46-.48 7-1.24V11c0 .66-3.13 2-7 2s-7-1.34-7-2V10.76zm0 5c1.54.76 4.14 1.24 7 1.24s5.46-.48 7-1.24V16c0 .66-3.13 2-7 2s-7-1.34-7-2v-.24z"/></svg></div>
+                    <!-- Set 5 -->
+                    <div class="compact-moving-box" title="C / C++"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 15c-2.76 0-5-2.24-5-5s2.24-5 5-5c1.63 0 3.06.79 3.98 2H13.8c-.46-.6-1.18-1-2-.1-1.66 0-3 1.34-3 3s1.34 3 3 3c.82 0 1.54-.4 2-.1h2.18c-.92 1.21-2.35 2-3.98 2z"/></svg></div>
+                    <div class="compact-moving-box" title="Tailwind CSS"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.336 6.182 14.975 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C7.666 17.818 9.027 19 12.001 19c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.336 13.382 8.975 12 6.001 12z"/></svg></div>
+                    <div class="compact-moving-box" title="HTML5"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 0h21l-1.91 21.563L11.97 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.236-2.679H5.414l.691 8.076h8.777l-.366 3.984-2.546.688-2.551-.692-.163-1.849H6.572l.323 3.659 5.074 1.399 5.083-1.399.711-7.972H8.531z"/></svg></div>
+                    <div class="compact-moving-box" title="CSS3"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 0h21l-1.91 21.563L11.97 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.236-2.679H5.414l.691 8.076h8.777l-.366 3.984-2.546.688-2.551-.692-.163-1.849H6.572l.323 3.659 5.074 1.399 5.083-1.399.711-7.972H8.531z"/></svg></div>
+                    <div class="compact-moving-box" title="JavaScript"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M3 3h18v18H3V3zm11.5 12.5c0-.83-.67-1.5-1.5-1.5h-1v-2h2.5V10H10v6h3c.83 0 1.5-.67 1.5-1.5zM8.5 16H10v-3.5H8.5V16z"/></svg></div>
+                    <div class="compact-moving-box" title="TypeScript"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 0h21A1.5 1.5 0 0 1 24 1.5v21a1.5 1.5 0 0 1-1.5 1.5h-21A1.5 1.5 0 0 1 0 22.5v-21A1.5 1.5 0 0 1 1.5 0zm10.27 12.96h-2.16v8.44H6.71v-8.44H4.55V10.7h7.22v2.26zm9.33 3.3c0-2.31-1.68-3.32-4.14-3.79l-1.02-.21c-.84-.17-1.18-.46-1.18-.94 0-.58.55-.91 1.43-.91.95 0 1.54.41 1.63 1.25h2.8c-.14-2.18-1.74-3.51-4.39-3.51-2.73 0-4.46 1.39-4.46 3.4 0 2.22 1.6 3.23 4.02 3.73l.97.2c.98.2 1.29.47 1.29.98 0 .61-.63.99-1.63.99-1.2 0-1.84-.49-1.97-1.42h-2.8c.17 2.37 1.94 3.63 4.79 3.63 2.92 0 4.67-1.39 4.67-3.41z"/></svg></div>
+                    <div class="compact-moving-box" title="React"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm0 4.5a7.5 7.5 0 1 1 0 15 7.5 7.5 0 0 1 0-15zm-2.25 4.5a2.25 2.25 0 1 0 4.5 0 2.25 2.25 0 0 0-4.5 0z"/></svg></div>
+                    <div class="compact-moving-box" title="Node.js"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.8l9.6 5.5v11.1L12 23.9l-9.6-5.5V7.3L12 1.8zm0 3.2L5.2 8.9v7.9L12 20.7l6.8-3.9V8.9L12 5z"/></svg></div>
+                    <div class="compact-moving-box" title="Git &amp; GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></div>
+                    <div class="compact-moving-box" title="SQL Database"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 1.79-9 4v10c0 2.21 4.03 4 9 4s9-1.79 9-4V7c0-2.21-4.03-4-9-4zm0 2c3.87 0 7 1.34 7 2s-3.13 2-7 2-7-1.34-7-2 3.13-2 7-2zm-7 5.76c1.54.76 4.14 1.24 7 1.24s5.46-.48 7-1.24V11c0 .66-3.13 2-7 2s-7-1.34-7-2V10.76zm0 5c1.54.76 4.14 1.24 7 1.24s5.46-.48 7-1.24V16c0 .66-3.13 2-7 2s-7-1.34-7-2v-.24z"/></svg></div>
+                    <!-- Set 6 -->
+                    <div class="compact-moving-box" title="C / C++"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 15c-2.76 0-5-2.24-5-5s2.24-5 5-5c1.63 0 3.06.79 3.98 2H13.8c-.46-.6-1.18-1-2-.1-1.66 0-3 1.34-3 3s1.34 3 3 3c.82 0 1.54-.4 2-.1h2.18c-.92 1.21-2.35 2-3.98 2z"/></svg></div>
+                    <div class="compact-moving-box" title="Tailwind CSS"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.336 6.182 14.975 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C7.666 17.818 9.027 19 12.001 19c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.336 13.382 8.975 12 6.001 12z"/></svg></div>
+                    <div class="compact-moving-box" title="HTML5"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 0h21l-1.91 21.563L11.97 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.236-2.679H5.414l.691 8.076h8.777l-.366 3.984-2.546.688-2.551-.692-.163-1.849H6.572l.323 3.659 5.074 1.399 5.083-1.399.711-7.972H8.531z"/></svg></div>
+                    <div class="compact-moving-box" title="CSS3"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 0h21l-1.91 21.563L11.97 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.236-2.679H5.414l.691 8.076h8.777l-.366 3.984-2.546.688-2.551-.692-.163-1.849H6.572l.323 3.659 5.074 1.399 5.083-1.399.711-7.972H8.531z"/></svg></div>
+                    <div class="compact-moving-box" title="JavaScript"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M3 3h18v18H3V3zm11.5 12.5c0-.83-.67-1.5-1.5-1.5h-1v-2h2.5V10H10v6h3c.83 0 1.5-.67 1.5-1.5zM8.5 16H10v-3.5H8.5V16z"/></svg></div>
+                    <div class="compact-moving-box" title="TypeScript"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 0h21A1.5 1.5 0 0 1 24 1.5v21a1.5 1.5 0 0 1-1.5 1.5h-21A1.5 1.5 0 0 1 0 22.5v-21A1.5 1.5 0 0 1 1.5 0zm10.27 12.96h-2.16v8.44H6.71v-8.44H4.55V10.7h7.22v2.26zm9.33 3.3c0-2.31-1.68-3.32-4.14-3.79l-1.02-.21c-.84-.17-1.18-.46-1.18-.94 0-.58.55-.91 1.43-.91.95 0 1.54.41 1.63 1.25h2.8c-.14-2.18-1.74-3.51-4.39-3.51-2.73 0-4.46 1.39-4.46 3.4 0 2.22 1.6 3.23 4.02 3.73l.97.2c.98.2 1.29.47 1.29.98 0 .61-.63.99-1.63.99-1.2 0-1.84-.49-1.97-1.42h-2.8c.17 2.37 1.94 3.63 4.79 3.63 2.92 0 4.67-1.39 4.67-3.41z"/></svg></div>
+                    <div class="compact-moving-box" title="React"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm0 4.5a7.5 7.5 0 1 1 0 15 7.5 7.5 0 0 1 0-15zm-2.25 4.5a2.25 2.25 0 1 0 4.5 0 2.25 2.25 0 0 0-4.5 0z"/></svg></div>
+                    <div class="compact-moving-box" title="Node.js"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.8l9.6 5.5v11.1L12 23.9l-9.6-5.5V7.3L12 1.8zm0 3.2L5.2 8.9v7.9L12 20.7l6.8-3.9V8.9L12 5z"/></svg></div>
+                    <div class="compact-moving-box" title="Git &amp; GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></div>
+                    <div class="compact-moving-box" title="SQL Database"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 1.79-9 4v10c0 2.21 4.03 4 9 4s9-1.79 9-4V7c0-2.21-4.03-4-9-4zm0 2c3.87 0 7 1.34 7 2s-3.13 2-7 2-7-1.34-7-2 3.13-2 7-2zm-7 5.76c1.54.76 4.14 1.24 7 1.24s5.46-.48 7-1.24V11c0 .66-3.13 2-7 2s-7-1.34-7-2V10.76zm0 5c1.54.76 4.14 1.24 7 1.24s5.46-.48 7-1.24V16c0 .66-3.13 2-7 2s-7-1.34-7-2v-.24z"/></svg></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Featured Projects Timeline (Scroll-Filling Timeline Concept) -->
+
+        <!-- Section 3: Featured Projects Timeline (Scroll-Filling Timeline Concept) -->
+        <section id="projects" class="projects-section">
+            <!-- Full-Section Cinematic Atmospheric Ambient Backdrop -->
+            <div class="projects-ambient-backdrop">
+                <!-- Interactive 60fps Particle & Matrix Canvas -->
+                <canvas id="projects-canvas" class="projects-bg-canvas"></canvas>
+
+                <!-- 1. QuestKarte Cebu City Task Network Atmosphere -->
+                <div class="ambient-layer ambient-questkarte">
+                    <div class="ambient-image-blur blur-questkarte"></div>
+                    <div class="ambient-metadata-tag">10.3157° N, 123.8854° E • CEBU CITY TASK MARKETPLACE</div>
+                </div>
+
+                <!-- 2. WildNest Wildlife & Resort Sanctuary Atmosphere -->
+                <div class="ambient-layer ambient-wildnest">
+                    <div class="ambient-image-blur blur-wildnest"></div>
+                    <div class="ambient-metadata-tag">CARMEN, CEBU • 170 HECTARES • WILDLIFE SANCTUARY</div>
+                </div>
+
+                <!-- 3. ApartLink Retro Terminal System Architecture Atmosphere -->
+                <div class="ambient-layer ambient-apartlink">
+                    <div class="ambient-image-blur blur-apartlink"></div>
+                    <div class="ambient-metadata-tag">FULL-STACK LEASE ENGINE • STATUS: ONLINE</div>
+                </div>
+
+                <div class="ambient-spotlight-beam"></div>
+            </div>
+
+            <div class="section-container">
+                <div class="projects-section-header reveal-on-scroll">
+                    <div>
+                        <div class="section-eyebrow" data-typewriter="true">PORTFOLIO TIMELINE</div>
+                        <h2 class="section-heading" data-typewriter="true">Featured Projects</h2>
+                    </div>
+                </div>
+
+                <!-- 2-Column Split Showcase Grid (Left: Timeline List, Right: Sticky Stage Window) -->
+                <div class="projects-showcase-grid reveal-on-scroll">
+                    
+                    <!-- Left Column: Interactive Scroll Timeline -->
+                    <div class="timeline-container">
+                        <div class="timeline-line-bg"></div>
+                        <div id="timeline-progress-bar" class="timeline-line-progress"></div>
+
+                        <!-- Timeline Item 1: 2026 QuestKarte -->
+                        <div class="timeline-item" data-year="2026">
+                            <div class="timeline-node"></div>
+                            <div class="timeline-content">
+                                <span class="timeline-badge-year">2026 • LATEST RELEASE</span>
+                                <a href="https://github.com/JamesNino-Mandawe/QuestKarte" target="_blank" rel="noopener noreferrer" class="project-row-card" data-project="questkarte">
+                                    <div class="project-row-number">01</div>
+                                    <div class="project-row-body">
+                                        <h3 class="project-row-title">QUESTKARTE</h3>
+                                        <p class="project-row-desc">Interactive local task &amp; quest marketplace platform featuring real-time Leaflet maps, trust factor scoring, GCash payments, and staff moderation workspace.</p>
+                                        <div class="project-row-keys">[REACT • TYPESCRIPT • SUPABASE • LEAFLET MAPS]</div>
+                                    </div>
+                                    <div class="project-row-arrow">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                                            <polyline points="7 7 17 7 17 17"></polyline>
+                                        </svg>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Timeline Item 2: 2025 WildNest -->
+                        <div class="timeline-item" data-year="2025">
+                            <div class="timeline-node"></div>
+                            <div class="timeline-content">
+                                <span class="timeline-badge-year">2025 • RESORT SYSTEM</span>
+                                <a href="https://github.com/JamesNino-Mandawe" target="_blank" rel="noopener noreferrer" class="project-row-card" data-project="wildnest">
+                                    <div class="project-row-number">02</div>
+                                    <div class="project-row-body">
+                                        <h3 class="project-row-title">WILDNEST</h3>
+                                        <p class="project-row-desc">Zoo resort and wildlife experience management web system featuring interactive booking, custom UI/UX, and database integration.</p>
+                                        <div class="project-row-keys">[TAILWIND CSS • JAVASCRIPT • WEB SYSTEM]</div>
+                                    </div>
+                                    <div class="project-row-arrow">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                                            <polyline points="7 7 17 7 17 17"></polyline>
+                                        </svg>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Timeline Item 3: 2025 ApartLink -->
+                        <div class="timeline-item" data-year="2025">
+                            <div class="timeline-node"></div>
+                            <div class="timeline-content">
+                                <span class="timeline-badge-year">2025 • PROPERTY WEB SYSTEM</span>
+                                <a href="https://github.com/JamesNino-Mandawe" target="_blank" rel="noopener noreferrer" class="project-row-card" data-project="apartlink">
+                                    <div class="project-row-number">03</div>
+                                    <div class="project-row-body">
+                                        <h3 class="project-row-title">APARTLINK</h3>
+                                        <p class="project-row-desc">Apartment leasing and property management system featuring real-time tenant tracking, room availability management, and clean interactive user interfaces.</p>
+                                        <div class="project-row-keys">[JAVASCRIPT • HTML/CSS • PROPERTY SYSTEM]</div>
+                                    </div>
+                                    <div class="project-row-arrow">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                                            <polyline points="7 7 17 7 17 17"></polyline>
+                                        </svg>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Sticky Interactive Showcase Stage Window -->
+                    <div class="projects-stage-column">
+                        <div class="stage-sticky-card">
+                            <div class="stage-window-frame">
+                                <div class="stage-header-bar">
+                                    <div class="stage-window-dots">
+                                        <span class="preview-dot dot-red"></span>
+                                        <span class="preview-dot dot-yellow"></span>
+                                        <span class="preview-dot dot-green"></span>
+                                    </div>
+                                    <span id="stage-window-title" class="stage-window-title">SYSTEM SHOWCASE STAGE</span>
+                                    <span class="stage-live-badge"><span class="badge-pulsing-dot"></span> LIVE INSPECTOR</span>
+                                </div>
+
+                                <div class="stage-body-content">
+                                    <!-- Default Resting Prompt Card -->
+                                    <div class="stage-layer stage-default active">
+                                        <div class="stage-idle-wrapper">
+                                            <div class="stage-idle-graphic">
+                                                <div class="idle-ring idle-ring-outer"></div>
+                                                <div class="idle-ring idle-ring-inner"></div>
+                                                <div class="idle-icon-center">⚡</div>
+                                            </div>
+                                            <h4 class="stage-idle-title">Interactive System Showcase</h4>
+                                            <p class="stage-idle-desc">Hover over any project on the left timeline to launch its live high-resolution system interface &amp; architecture.</p>
+                                            <div class="stage-idle-chips">
+                                                <span class="idle-chip">01 QUESTKARTE</span>
+                                                <span class="idle-chip">02 WILDNEST</span>
+                                                <span class="idle-chip">03 APARTLINK</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Layer 1: QuestKarte Screen -->
+                                    <div class="stage-layer stage-questkarte">
+                                        <div class="stage-img-wrapper">
+                                            <img src="assets/questkarte_ui.png" alt="QuestKarte Task Marketplace Intro UI" class="stage-ui-img">
+                                        </div>
+                                        <div class="stage-caption-bar">
+                                            <span class="stage-caption-tag">QUESTKARTE</span>
+                                            <span class="stage-caption-text">Web Task Marketplace • Real-Time Leaflet Maps &amp; Trust Factor</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Layer 2: WildNest Screen -->
+                                    <div class="stage-layer stage-wildnest">
+                                        <div class="stage-img-wrapper">
+                                            <img src="assets/wildnest_ui.png" alt="WildNest Resort Management Intro UI" class="stage-ui-img">
+                                        </div>
+                                        <div class="stage-caption-bar">
+                                            <span class="stage-caption-tag">WILDNEST</span>
+                                            <span class="stage-caption-text">Full-Stack Web Interface • Wildlife Sanctuary &amp; Resort Systems</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Layer 3: ApartLink Screen -->
+                                    <div class="stage-layer stage-apartlink">
+                                        <div class="stage-img-wrapper">
+                                            <img src="assets/apartlink_ui.png" alt="ApartLink Retro Console Intro UI" class="stage-ui-img">
+                                        </div>
+                                        <div class="stage-caption-bar">
+                                            <span class="stage-caption-tag">APARTLINK</span>
+                                            <span class="stage-caption-text">Modern Web Architecture • Property Management Dashboard</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Contact & Footer Section -->
+    <footer id="contact" class="contact-section">
+        <!-- Liquid Energy Wave Backdrop Canvas -->
+        <canvas id="contact-canvas" class="contact-bg-canvas"></canvas>
+
+        <div class="section-container reveal-on-scroll">
+            <!-- Live Time Badge -->
+            <div class="contact-telemetry-bar">
+                <span id="live-pht-clock" class="telemetry-clock">--:--:-- PHT</span>
+            </div>
+
+            <div class="section-eyebrow" data-typewriter="true">GET IN TOUCH</div>
+            <h2 class="section-heading" data-typewriter="true">Let's Connect &amp; Collaborate</h2>
+            
+            <div class="contact-grid reveal-on-scroll">
+                <a href="https://github.com/JamesNino-Mandawe" target="_blank" rel="noopener noreferrer" class="contact-card" data-copy="https://github.com/JamesNino-Mandawe">
+                    <div class="contact-card-glare"></div>
+                    <div class="card-telemetry-tag">[PORTAL: GITHUB]</div>
+                    <div class="contact-icon-wrapper">
+                        <svg class="contact-svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                        </svg>
+                    </div>
+                    <div class="contact-details">
+                        <span class="contact-label">GitHub</span>
+                        <span class="contact-value">JamesNino-Mandawe</span>
+                    </div>
+                    <div class="card-action-badge">VISIT / COPY</div>
+                </a>
+
+                <a href="https://www.facebook.com/james.mandawe.37/" target="_blank" rel="noopener noreferrer" class="contact-card" data-copy="https://www.facebook.com/james.mandawe.37/">
+                    <div class="contact-card-glare"></div>
+                    <div class="card-telemetry-tag">[PORTAL: FACEBOOK]</div>
+                    <div class="contact-icon-wrapper">
+                        <svg class="contact-svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        </svg>
+                    </div>
+                    <div class="contact-details">
+                        <span class="contact-label">Facebook</span>
+                        <span class="contact-value">james.mandawe.37</span>
+                    </div>
+                    <div class="card-action-badge">VISIT / COPY</div>
+                </a>
+
+                <a href="#" class="contact-card" data-copy="James Nino Mandawe">
+                    <div class="contact-card-glare"></div>
+                    <div class="card-telemetry-tag">[PORTAL: LINKEDIN]</div>
+                    <div class="contact-icon-wrapper">
+                        <svg class="contact-svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.77a1.62 1.62 0 1 0 0 3.24 1.62 1.62 0 0 0 0-3.24z"/>
+                        </svg>
+                    </div>
+                    <div class="contact-details">
+                        <span class="contact-label">LinkedIn</span>
+                        <span class="contact-value">James Nino Mandawe</span>
+                    </div>
+                    <div class="card-action-badge">CONNECT / COPY</div>
+                </a>
+
+                <a href="mailto:mandawejamesnino@gmail.com" class="contact-card" data-copy="mandawejamesnino@gmail.com">
+                    <div class="contact-card-glare"></div>
+                    <div class="card-telemetry-tag">[PORTAL: DIRECT EMAIL]</div>
+                    <div class="contact-icon-wrapper">
+                        <svg class="contact-svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                    </div>
+                    <div class="contact-details">
+                        <span class="contact-label">Email</span>
+                        <span class="contact-value">mandawejamesnino@gmail.com</span>
+                    </div>
+                    <div class="card-action-badge">SEND / COPY</div>
+                </a>
+            </div>
+
+            <!-- Giant Kinetic Spotlight Signature -->
+            <div class="footer-signature" id="footer-kinetic-signature">
+                <span class="footer-name">
+                    <span class="kinetic-letter">J</span><span class="kinetic-letter">A</span><span class="kinetic-letter">M</span><span class="kinetic-letter">E</span><span class="kinetic-letter">S</span>
+                    <span class="kinetic-space">&nbsp;</span>
+                    <span class="kinetic-letter">N</span><span class="kinetic-letter kinetic-tilde">I</span><span class="kinetic-letter">Ñ</span><span class="kinetic-letter">O</span>
+                    <span class="kinetic-space">&nbsp;</span>
+                    <span class="kinetic-letter">M</span><span class="kinetic-letter">A</span><span class="kinetic-letter">N</span><span class="kinetic-letter">D</span><span class="kinetic-letter">A</span><span class="kinetic-letter">W</span><span class="kinetic-letter">E</span>
+                </span>
+            </div>
+
+            <!-- Copy Toast Notification -->
+            <div id="contact-copy-toast" class="contact-toast">COPIED TO CLIPBOARD!</div>
+
+            <div class="footer-copyright">
+                <p>&copy; 2026 James Niño B. Mandawe. Cebu Institute of Technology - University. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom Script -->
+    <script src="script.js"></script>
+</body>
+</html>
