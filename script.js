@@ -1,22 +1,13 @@
-/* ==========================================================================
-   JAMES NIÑO B. MANDAWE — PERSONAL PORTFOLIO
-   Vanilla JavaScript Controller
-   Kanye West Splash Screen & Scroll-Reactive Lanyard Physics
-   ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
     window.isLightTheme = document.documentElement.getAttribute('data-theme') === 'light';
-    
-    /* ----------------------------------------------------------------------
-       1. Kanye West Cinematic Splash Screen Controller & Particle Engine
-       ---------------------------------------------------------------------- */
+
     const introScreen = document.getElementById('intro-screen');
     window.splashDismissed = !introScreen;
 
     if (introScreen) {
         const introCanvas = document.getElementById('intro-canvas');
 
-        // 60fps Interactive Particle & Energy Web Canvas Engine
         if (introCanvas) {
             const ctx = introCanvas.getContext('2d');
             let width = introCanvas.width = window.innerWidth;
@@ -84,7 +75,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 950);
         }
 
-        // Auto-dismiss after 4.2 seconds
         const splashTimer = setTimeout(() => {
             dismissSplash();
         }, 4200);
@@ -95,28 +85,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /* ----------------------------------------------------------------------
-       2. Scroll-Proportional Bouncy Elastic Lanyard Physics Loop
-       ---------------------------------------------------------------------- */
     const lanyard = document.getElementById('lanyard');
-    
+
     if (lanyard) {
         let currentScrollY = window.scrollY;
         let lastScrollY = window.scrollY;
-        
-        // Physics Simulation Variables
-        let posY = 0;              // Current extension in px
-        let targetPosY = 0;        // Desired target extension based on scroll
-        let velY = 0;              // Vertical velocity
-        
-        let rotDeg = 0;            // Current rotation in degrees
-        let rotVel = 0;            // Rotational velocity
-        
-        // Spring-Mass-Damper Physics Constants (High Bounce Elasticity)
-        const STIFFNESS = 0.09;     // Elastic spring tension
-        const DAMPING = 0.74;       // Friction / dampening (0.74 gives natural organic bounce)
-        const MAX_DROP_PX = 135;    // Maximum drop height in px
-        
+
+        let posY = 0;              
+        let targetPosY = 0;        
+        let velY = 0;              
+
+        let rotDeg = 0;            
+        let rotVel = 0;            
+
+        const STIFFNESS = 0.09;     
+        const DAMPING = 0.74;       
+        const MAX_DROP_PX = 135;    
+
         function lanyardPhysicsLoop() {
             if (lanyard.classList.contains('lanyard-user-disabled')) {
                 lanyard.classList.remove('lanyard-visible');
@@ -126,10 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             currentScrollY = window.scrollY;
-            
-            // 1. Scroll-Proportional Extension:
-            // At top (scrollY <= 15), retract off-screen (-200px)
-            // As user scrolls, drop extends proportionally with every pixel scrolled!
+
             if (currentScrollY <= 15) {
                 targetPosY = -200;
                 lanyard.classList.remove('lanyard-visible');
@@ -137,38 +119,31 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 lanyard.classList.add('lanyard-visible');
                 lanyard.classList.remove('lanyard-hidden');
-                
-                // Drop height equals proportional scroll distance, capped at MAX_DROP_PX
+
                 targetPosY = Math.min((currentScrollY - 15) * 0.55, MAX_DROP_PX);
             }
-            
-            // 2. Spring Elasticity Calculation (Vertical Bounce)
+
             const forceY = (targetPosY - posY) * STIFFNESS;
             velY = (velY + forceY) * DAMPING;
             posY += velY;
-            
-            // 3. Rotational Sway Physics (Pendulum Motion)
+
             const scrollDelta = currentScrollY - lastScrollY;
             const targetRot = Math.max(Math.min(scrollDelta * 0.38, 14), -14);
             const rotForce = (targetRot - rotDeg) * 0.12;
             rotVel = (rotVel + rotForce) * 0.80;
             rotDeg += rotVel;
-            
-            // Apply transformed CSS variables to lanyard element
+
             lanyard.style.setProperty('--lanyard-offset', `${posY}px`);
             lanyard.style.setProperty('--lanyard-rotation', `${rotDeg}deg`);
-            
+
             lastScrollY = currentScrollY;
-            
+
             requestAnimationFrame(lanyardPhysicsLoop);
         }
-        
+
         requestAnimationFrame(lanyardPhysicsLoop);
     }
 
-    /* ----------------------------------------------------------------------
-       2b. User ID Lanyard Sling Visibility Toggle
-       ---------------------------------------------------------------------- */
     function initLanyardToggle() {
         const lanyard = document.getElementById('lanyard');
         const lanyardBtn = document.getElementById('lanyard-toggle');
@@ -182,7 +157,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Read saved visibility or default to visible
         const savedDisabled = localStorage.getItem('portfolio-lanyard-disabled');
         if (savedDisabled === 'true') {
             lanyard.classList.add('lanyard-user-disabled');
@@ -204,9 +178,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     initLanyardToggle();
 
-    /* ----------------------------------------------------------------------
-       2c. 3D Smart Card Flipping & Parallax Tilt Tracking Controller
-       ---------------------------------------------------------------------- */
     function initCard3DFlipAndTilt() {
         const card3D = document.getElementById('lanyard-card-3d');
         const flipBtn = document.getElementById('card-flip-btn');
@@ -214,7 +185,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const cardCloseBackBtn = document.getElementById('card-close-btn-back');
         const heroPortraitCard = document.getElementById('hero-portrait-card');
 
-        // Card Flip Handlers
         function toggleFlip(e) {
             if (e) e.stopPropagation();
             if (card3D) {
@@ -241,7 +211,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Dynamic 3D Parallax Tilt Effect for ID Card & Hero Frame Card
         const tiltElements = [card3D, heroPortraitCard].filter(Boolean);
 
         tiltElements.forEach(elem => {
@@ -266,9 +235,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     initCard3DFlipAndTilt();
 
-    /* ----------------------------------------------------------------------
-       4. Interactive Curvy Box Matrix Canvas Controller (Alex Mercer UI Style)
-       ---------------------------------------------------------------------- */
     function initHeroBoxesCanvas() {
         const canvas = document.getElementById('hero-boxes-canvas');
         const heroSection = document.getElementById('hero');
@@ -280,10 +246,9 @@ document.addEventListener('DOMContentLoaded', () => {
         let height = 0;
         let dpr = 1;
 
-        // Grid tile config matching Alex Mercer UI reference
-        const TILE_SIZE = 56;    // Width/Height of each rounded box tile
-        const GAP = 10;          // Gap between boxes
-        const RADIUS = 14;       // Curvy box corner radius
+        const TILE_SIZE = 56;    
+        const GAP = 10;          
+        const RADIUS = 14;       
 
         let mouse = { x: -1000, y: -1000, targetX: -1000, targetY: -1000, active: false };
 
@@ -301,7 +266,6 @@ document.addEventListener('DOMContentLoaded', () => {
             ctx.scale(dpr, dpr);
         }
 
-        // Helper to draw rounded rectangles
         function drawRoundedRect(ctx, x, y, w, h, r) {
             ctx.beginPath();
             if (ctx.roundRect) {
@@ -320,9 +284,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Render loop
         function render() {
-            // Lerp mouse position for smooth trailing effect
+
             mouse.x += (mouse.targetX - mouse.x) * 0.12;
             mouse.y += (mouse.targetY - mouse.y) * 0.12;
 
@@ -332,7 +295,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const cols = Math.ceil(width / totalCellSize) + 1;
             const rows = Math.ceil(height / totalCellSize) + 1;
 
-            // Radial glow spotlight on the right side behind portrait (Alex Mercer UI)
             const spotlightX = width * 0.75;
             const spotlightY = height * 0.45;
 
@@ -343,17 +305,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     const centerX = x + TILE_SIZE / 2;
                     const centerY = y + TILE_SIZE / 2;
 
-                    // Distance to cursor
                     const distToMouse = Math.hypot(centerX - mouse.x, centerY - mouse.y);
                     const mouseInfluenceRadius = 240;
                     let mouseIntensity = 0;
 
                     if (distToMouse < mouseInfluenceRadius) {
                         mouseIntensity = 1 - (distToMouse / mouseInfluenceRadius);
-                        mouseIntensity = Math.pow(mouseIntensity, 2); // Quadratic ease
+                        mouseIntensity = Math.pow(mouseIntensity, 2); 
                     }
 
-                    // Distance to right spotlight
                     const distToSpotlight = Math.hypot(centerX - spotlightX, centerY - spotlightY);
                     const spotlightRadius = 650;
                     let spotlightIntensity = 0;
@@ -362,18 +322,15 @@ document.addEventListener('DOMContentLoaded', () => {
                         spotlightIntensity = Math.pow(spotlightIntensity, 1.8);
                     }
 
-                    // Draw Tile Path
                     drawRoundedRect(ctx, x, y, TILE_SIZE, TILE_SIZE, RADIUS);
 
                     const isLight = window.isLightTheme;
 
-                    // Default tile stroke & fill
                     let strokeColor = isLight 
                         ? `rgba(184, 134, 11, ${0.45 + spotlightIntensity * 0.35})` 
                         : `rgba(179, 46, 51, ${0.16 + spotlightIntensity * 0.22})`;
                     let strokeWidth = isLight ? 1.6 : 1.2;
 
-                    // Create base gradient for box tile
                     const grad = ctx.createLinearGradient(x, y, x + TILE_SIZE, y + TILE_SIZE);
 
                     if (mouseIntensity > 0.01) {
@@ -396,7 +353,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         strokeWidth = 1.6 + mouseIntensity * 1.5;
                         ctx.shadowBlur = mouseIntensity * 24;
                     } else {
-                        // Ambient resting state (Bordeaux tint in dark mode, distinct warm ivory-sand in light mode)
+
                         const baseAlpha = 0.08 + spotlightIntensity * 0.28;
                         if (isLight) {
                             grad.addColorStop(0, `rgba(236, 226, 210, ${0.92 + spotlightIntensity * 0.08})`);
@@ -416,7 +373,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     ctx.strokeStyle = strokeColor;
                     ctx.stroke();
 
-                    // Highlight top-left inner border edge for 3D glassy depth
                     ctx.save();
                     drawRoundedRect(ctx, x, y, TILE_SIZE, TILE_SIZE, RADIUS);
                     ctx.clip();
@@ -436,7 +392,6 @@ document.addEventListener('DOMContentLoaded', () => {
             requestAnimationFrame(render);
         }
 
-        // Mouse events
         heroSection.addEventListener('mousemove', (e) => {
             const rect = heroSection.getBoundingClientRect();
             mouse.targetX = e.clientX - rect.left;
@@ -458,9 +413,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     initHeroBoxesCanvas();
 
-    /* ----------------------------------------------------------------------
-       5. Dark / Light Theme Toggle Controller (Circular View Transition)
-       ---------------------------------------------------------------------- */
     function initThemeToggle() {
         const themeBtn = document.getElementById('theme-toggle');
         if (!themeBtn) return;
@@ -485,7 +437,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Check saved theme or default to dark
         const savedTheme = localStorage.getItem('portfolio-theme') || 'dark';
         applyTheme(savedTheme);
 
@@ -493,7 +444,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const currentTheme = window.isLightTheme ? 'light' : 'dark';
             const nextTheme = currentTheme === 'light' ? 'dark' : 'light';
 
-            // Calculate origin point of click for expanding circular ripple animation
             const x = e.clientX || window.innerWidth / 2;
             const y = e.clientY || window.innerHeight / 2;
             const maxRadius = Math.hypot(
@@ -501,11 +451,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 Math.max(y, window.innerHeight - y)
             );
 
-            // Animate button scale and 360 rotation
             themeBtn.classList.add('theme-toggle-animating');
             setTimeout(() => themeBtn.classList.remove('theme-toggle-animating'), 650);
 
-            // Native Web View Transitions API (dreeyanzz.vercel.app technique)
             if (document.startViewTransition) {
                 document.documentElement.style.setProperty('--toggle-x', `${x}px`);
                 document.documentElement.style.setProperty('--toggle-y', `${y}px`);
@@ -515,7 +463,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     applyTheme(nextTheme);
                 });
             } else {
-                // Fallback radial overlay sweep for older browsers
+
                 performOverlayFallback(nextTheme, x, y, maxRadius, () => {
                     applyTheme(nextTheme);
                 });
@@ -555,9 +503,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     initThemeToggle();
 
-    /* ----------------------------------------------------------------------
-       6. Interactive Projects Scroll Timeline Progress Line Controller
-       ---------------------------------------------------------------------- */
     function initTimelineScroll() {
         const progressBar = document.getElementById('timeline-progress-bar');
         const timelineContainer = document.querySelector('.timeline-container');
@@ -568,7 +513,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const rect = timelineContainer.getBoundingClientRect();
             const viewportHeight = window.innerHeight;
 
-            // Calculate scroll progress percentage inside the timeline block
             const totalHeight = rect.height;
             const scrollOffset = (viewportHeight * 0.5) - rect.top;
             let progressPct = (scrollOffset / totalHeight) * 100;
@@ -576,7 +520,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             progressBar.style.height = `${progressPct}%`;
 
-            // Highlight timeline nodes as the scroll line passes them
             timelineItems.forEach(item => {
                 const itemRect = item.getBoundingClientRect();
                 if (itemRect.top <= viewportHeight * 0.58) {
@@ -593,9 +536,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     initTimelineScroll();
 
-    /* ----------------------------------------------------------------------
-       8. Interactive Ambient Project Backdrop Projections (Hover Controller)
-       ---------------------------------------------------------------------- */
     function initProjectProjections() {
         const projectsSection = document.getElementById('projects');
         const projectCards = document.querySelectorAll('.project-row-card[data-project]');
@@ -614,7 +554,6 @@ document.addEventListener('DOMContentLoaded', () => {
             'apartlink': 'APARTLINK — PROPERTY MANAGEMENT SYSTEM'
         };
 
-        // Track cursor coordinates relative to projects section for dynamic spotlight & 3D tilt
         projectsSection.addEventListener('mousemove', (e) => {
             const rect = projectsSection.getBoundingClientRect();
             const x = ((e.clientX - rect.left) / rect.width) * 100;
@@ -622,7 +561,6 @@ document.addEventListener('DOMContentLoaded', () => {
             projectsSection.style.setProperty('--mouse-x', `${x.toFixed(1)}%`);
             projectsSection.style.setProperty('--mouse-y', `${y.toFixed(1)}%`);
 
-            // Subtle 3D Perspective Tilt on the Stage Frame when active
             if (stageFrame && projectsSection.classList.contains('ambient-active')) {
                 const tiltX = (y - 50) * -0.12;
                 const tiltY = (x - 50) * 0.12;
@@ -638,26 +576,21 @@ document.addEventListener('DOMContentLoaded', () => {
             card.addEventListener('mouseenter', () => {
                 projectsSection.classList.add('ambient-active');
 
-                // Toggle ambient background layers
                 ambientLayers.forEach(layer => layer.classList.remove('active'));
                 if (targetAmbientLayer) targetAmbientLayer.classList.add('active');
 
-                // Toggle stage display layers
                 stageLayers.forEach(layer => layer.classList.remove('active'));
                 if (targetStageLayer) targetStageLayer.classList.add('active');
 
-                // Update stage window header title
                 if (stageTitle && titlesMap[projectKey]) {
                     stageTitle.textContent = titlesMap[projectKey];
                 }
 
-                // Dynamic Stage Frame Neon Border Glow
                 if (stageFrame) {
                     stageFrame.classList.remove('glow-questkarte', 'glow-wildnest', 'glow-apartlink');
                     stageFrame.classList.add(`glow-${projectKey}`);
                 }
 
-                // Smooth Dynamic Y-Tracking: Align Stage Window directly next to hovered card with bottom clamping!
                 if (stageCard && stageColumn) {
                     const cardRect = card.getBoundingClientRect();
                     const columnRect = stageColumn.getBoundingClientRect();
@@ -671,17 +604,13 @@ document.addEventListener('DOMContentLoaded', () => {
             card.addEventListener('mouseleave', () => {
                 projectsSection.classList.remove('ambient-active');
 
-                // Reset ambient background layers
                 if (targetAmbientLayer) targetAmbientLayer.classList.remove('active');
 
-                // Reset stage display layers to default idle state
                 stageLayers.forEach(layer => layer.classList.remove('active'));
                 if (defaultStageLayer) defaultStageLayer.classList.add('active');
 
-                // Reset header title
                 if (stageTitle) stageTitle.textContent = 'SYSTEM SHOWCASE STAGE';
 
-                // Reset 3D tilt & neon glows
                 if (stageFrame) {
                     stageFrame.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
                     stageFrame.classList.remove('glow-questkarte', 'glow-wildnest', 'glow-apartlink');
@@ -692,12 +621,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     initProjectProjections();
 
-    /* ----------------------------------------------------------------------
-       8b. Interactive 60fps Particle & Matrix Canvas Backdrop Controller
-       ---------------------------------------------------------------------- */
-    /* ----------------------------------------------------------------------
-       8b. Interactive 60fps Geometric Constellation Mesh Engine (Rotating Clusters)
-       ---------------------------------------------------------------------- */
     function initProjectsParticleCanvas() {
         const canvas = document.getElementById('projects-canvas');
         const projectsSection = document.getElementById('projects');
@@ -708,19 +631,18 @@ document.addEventListener('DOMContentLoaded', () => {
         let height = 0;
         let dpr = 1;
 
-        let activeMode = 'idle'; // 'idle', 'questkarte', 'wildnest', 'apartlink'
+        let activeMode = 'idle'; 
         let mouse = { x: -1000, y: -1000 };
         let time = 0;
 
-        // 7 Polyhedral Geometric Constellation Mesh Clusters for Full Background Coverage
         const clusterConfigs = [
-            { relX: 0.82, relY: 0.28, baseRadius: 210, nodeCount: 20, rotSpeed: 0.0012 },  // Top Right (Stage Top)
-            { relX: 0.18, relY: 0.35, baseRadius: 230, nodeCount: 22, rotSpeed: -0.0009 }, // Top Left (Timeline Top)
-            { relX: 0.76, relY: 0.72, baseRadius: 190, nodeCount: 18, rotSpeed: 0.0014 },  // Mid-Bottom Right (Stage Bottom)
-            { relX: 0.22, relY: 0.78, baseRadius: 200, nodeCount: 18, rotSpeed: -0.0011 }, // Bottom Left (Timeline Bottom)
-            { relX: 0.50, relY: 0.15, baseRadius: 170, nodeCount: 15, rotSpeed: 0.0010 },  // Top Center Header
-            { relX: 0.48, relY: 0.55, baseRadius: 180, nodeCount: 16, rotSpeed: -0.0013 }, // Center Gap Field
-            { relX: 0.88, relY: 0.92, baseRadius: 160, nodeCount: 14, rotSpeed: 0.0015 }   // Far Bottom Right Corner
+            { relX: 0.82, relY: 0.28, baseRadius: 210, nodeCount: 20, rotSpeed: 0.0012 },  
+            { relX: 0.18, relY: 0.35, baseRadius: 230, nodeCount: 22, rotSpeed: -0.0009 }, 
+            { relX: 0.76, relY: 0.72, baseRadius: 190, nodeCount: 18, rotSpeed: 0.0014 },  
+            { relX: 0.22, relY: 0.78, baseRadius: 200, nodeCount: 18, rotSpeed: -0.0011 }, 
+            { relX: 0.50, relY: 0.15, baseRadius: 170, nodeCount: 15, rotSpeed: 0.0010 },  
+            { relX: 0.48, relY: 0.55, baseRadius: 180, nodeCount: 16, rotSpeed: -0.0013 }, 
+            { relX: 0.88, relY: 0.92, baseRadius: 160, nodeCount: 14, rotSpeed: 0.0015 }   
         ];
 
         class ConstellationCluster {
@@ -754,7 +676,6 @@ document.addEventListener('DOMContentLoaded', () => {
             update(w, h, mouseX, mouseY) {
                 this.angle += this.rotSpeed;
 
-                // Subtle anchor point drift (smooth floating movement)
                 const driftX = Math.sin(time * 0.02 + this.relX * 10) * 35;
                 const driftY = Math.cos(time * 0.015 + this.relY * 10) * 35;
 
@@ -775,7 +696,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     let wx = cx + rx;
                     let wy = cy + ry;
 
-                    // Mouse magnet displacement
                     const dx = mouseX - wx;
                     const dy = mouseY - wy;
                     const dist = Math.hypot(dx, dy);
@@ -871,9 +791,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const theme = getThemeColors();
             const worldClusters = clusters.map(c => c.update(width, height, mouse.x, mouse.y));
 
-            // Render each cluster's geometric mesh, triangulated facets, and nodes
             worldClusters.forEach((nodes) => {
-                // A. Draw Triangulated Geometric Polygon Facets (3D Polyhedral Mesh effect)
+
                 for (let i = 0; i < nodes.length; i++) {
                     for (let j = i + 1; j < nodes.length; j++) {
                         const d1 = Math.hypot(nodes[i].x - nodes[j].x, nodes[i].y - nodes[j].y);
@@ -896,7 +815,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }
 
-                // B. Draw Laser Filament Lines between cluster nodes
                 for (let i = 0; i < nodes.length; i++) {
                     for (let j = i + 1; j < nodes.length; j++) {
                         const dx = nodes[i].x - nodes[j].x;
@@ -913,7 +831,6 @@ document.addEventListener('DOMContentLoaded', () => {
                             ctx.lineWidth = 0.95;
                             ctx.stroke();
 
-                            // Tiny energy pulse particle traveling along line
                             const pulsePos = (time * 0.02 + i + j) % 1;
                             const px = nodes[i].x + (nodes[j].x - nodes[i].x) * pulsePos;
                             const py = nodes[i].y + (nodes[j].y - nodes[i].y) * pulsePos;
@@ -925,7 +842,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }
 
-                // C. Render Node Vertices with Dual Glowing Halos
                 nodes.forEach(n => {
                     ctx.beginPath();
                     ctx.arc(n.x, n.y, n.size * 2.8, 0, Math.PI * 2);
@@ -942,7 +858,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             });
 
-            // Draw Inter-Cluster Bridge Lines
             for (let i = 0; i < worldClusters.length; i++) {
                 for (let j = i + 1; j < worldClusters.length; j++) {
                     const nodesA = worldClusters[i];
@@ -1006,9 +921,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     initProjectProjections();
 
-    /* ----------------------------------------------------------------------
-       9. Contact Section Cyber Terminal & Liquid Energy Wave Canvas Engine
-       ---------------------------------------------------------------------- */
     function initContactCanvas() {
         const canvas = document.getElementById('contact-canvas');
         const contactSection = document.getElementById('contact');
@@ -1061,7 +973,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const isLight = window.isLightTheme;
 
-            // 1. Render Flowing Liquid Energy Plasma Waves (Full Section Coverage: 8 Layers)
             const waveCount = 8;
             for (let w = 0; w < waveCount; w++) {
                 ctx.beginPath();
@@ -1078,7 +989,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 for (let x = 0; x <= width; x += 12) {
                     let y = baseHeight + Math.sin(x * freq + speed) * amplitude + Math.cos(x * 0.004 - speed * 0.6) * (amplitude * 0.4);
 
-                    // Mouse proximity dynamic wave distortion
                     const dx = mouse.x - x;
                     const dy = mouse.y - y;
                     const dist = Math.hypot(dx, dy);
@@ -1097,7 +1007,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 ctx.stroke();
             }
 
-            // 2. Render Expanding Shockwaves
             for (let i = shockwaves.length - 1; i >= 0; i--) {
                 const sw = shockwaves[i];
                 sw.radius += 6;
@@ -1128,9 +1037,6 @@ document.addEventListener('DOMContentLoaded', () => {
         render();
     }
 
-    /* ----------------------------------------------------------------------
-       9b. 3D Holographic Tilt Deck & One-Click Copy Toast System
-       ---------------------------------------------------------------------- */
     function initContactCards3D() {
         const contactCards = document.querySelectorAll('.contact-card');
         const toast = document.getElementById('contact-copy-toast');
@@ -1177,15 +1083,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /* ----------------------------------------------------------------------
-       9c. Kinetic Spotlight Signature & Real-Time PHT Clock
-       ---------------------------------------------------------------------- */
     function initKineticSignature() {
         const clockEl = document.getElementById('live-pht-clock');
         const signatureContainer = document.getElementById('footer-kinetic-signature');
         const letters = document.querySelectorAll('.kinetic-letter');
 
-        // Live PHT (Philippine Standard Time GMT+8) Clock
         function updateClock() {
             if (!clockEl) return;
             const now = new Date();
@@ -1202,7 +1104,6 @@ document.addEventListener('DOMContentLoaded', () => {
         setInterval(updateClock, 1000);
         updateClock();
 
-        // Distance-based Spotlight Illumination on Giant Signature Letters
         if (signatureContainer && letters.length) {
             document.addEventListener('mousemove', (e) => {
                 const isLight = window.isLightTheme;
@@ -1239,11 +1140,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    /* ----------------------------------------------------------------------
-       8b. About Me Section Cinematic Aurora Canvas & 3D Tilt Deck Engine
-       ---------------------------------------------------------------------- */
     function initAboutSectionUI() {
-        // 1. Ambient Aurora & Micro Gold Particle Dust Canvas
+
         const canvas = document.getElementById('about-canvas');
         if (canvas) {
             const ctx = canvas.getContext('2d');
@@ -1266,7 +1164,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     mouseX = -1000;
                     mouseY = -1000;
                 });
-                // Click to trigger expanding PCB voltage shockwaves!
+
                 section.addEventListener('click', (e) => {
                     const rect = canvas.getBoundingClientRect();
                     shockwaves.push({
@@ -1279,7 +1177,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
 
-            // Soft Floating Micro Particle Dust
             const particles = [];
             const particleCount = 35;
             for (let i = 0; i < particleCount; i++) {
@@ -1294,7 +1191,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
 
-            // Interactive Balanced PCB Circuit Network Generator
             let pcbTraces = [];
             let pcbVias = [];
             let pcbPulses = [];
@@ -1306,25 +1202,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (width < 400 || height < 300) return;
 
-                // Fixed structured layout of 10 clean PCB framing trace routes
                 const layout = [
-                    // Top-Left Header Circuit
+
                     { start: { x: 30, y: 35 }, mid: { x: 260, y: 35 }, end: { x: 300, y: 70 }, color: 'rgba(212, 175, 55, ' },
                     { start: { x: 50, y: 70 }, mid: { x: 180, y: 70 }, end: { x: 220, y: 110 }, color: 'rgba(179, 46, 51, ' },
-                    
-                    // Top-Right Header Circuit
+
                     { start: { x: width - 30, y: 40 }, mid: { x: width - 280, y: 40 }, end: { x: width - 320, y: 80 }, color: 'rgba(212, 175, 55, ' },
                     { start: { x: width - 60, y: 80 }, mid: { x: width - 200, y: 80 }, end: { x: width - 240, y: 120 }, color: 'rgba(179, 46, 51, ' },
 
-                    // Mid Gutter Vertical Trace Accents
                     { start: { x: width * 0.52, y: 40 }, mid: { x: width * 0.52, y: 220 }, end: { x: width * 0.56, y: 280 }, color: 'rgba(212, 175, 55, ' },
                     { start: { x: width * 0.48, y: height - 40 }, mid: { x: width * 0.48, y: height - 200 }, end: { x: width * 0.44, y: height - 260 }, color: 'rgba(179, 46, 51, ' },
 
-                    // Bottom-Left Footer Circuit
                     { start: { x: 35, y: height - 35 }, mid: { x: 280, y: height - 35 }, end: { x: 320, y: height - 75 }, color: 'rgba(212, 175, 55, ' },
                     { start: { x: 60, y: height - 75 }, mid: { x: 200, y: height - 75 }, end: { x: 240, y: height - 115 }, color: 'rgba(179, 46, 51, ' },
 
-                    // Bottom-Right Footer Circuit
                     { start: { x: width - 35, y: height - 35 }, mid: { x: width - 280, y: height - 35 }, end: { x: width - 320, y: height - 75 }, color: 'rgba(212, 175, 55, ' },
                     { start: { x: width - 60, y: height - 75 }, mid: { x: width - 220, y: height - 75 }, end: { x: width - 260, y: height - 115 }, color: 'rgba(179, 46, 51, ' }
                 ];
@@ -1342,7 +1233,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         vias: [vStart, vEnd]
                     });
 
-                    // 1 electrical signal pulse per trace
                     pcbPulses.push({
                         traceIdx: idx,
                         progress: Math.random(),
@@ -1365,7 +1255,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 time += 0.008;
                 ctx.clearRect(0, 0, width, height);
 
-                // 1. Soft Ambient Radial Lights (Clean Luxury Atmosphere)
                 const grad1X = width * 0.2 + Math.sin(time) * 60;
                 const grad1Y = height * 0.3 + Math.cos(time * 0.8) * 40;
                 const radGrad1 = ctx.createRadialGradient(grad1X, grad1Y, 10, grad1X, grad1Y, width * 0.45);
@@ -1384,7 +1273,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 ctx.fillStyle = radGrad2;
                 ctx.fillRect(0, 0, width, height);
 
-                // 2. Render Interactive PCB Shockwaves (Triggered on Click)
                 for (let i = shockwaves.length - 1; i >= 0; i--) {
                     const sw = shockwaves[i];
                     sw.radius += 6;
@@ -1404,7 +1292,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     ctx.stroke();
                     ctx.shadowBlur = 0;
 
-                    // Shockwave energizes PCB vias on contact!
                     for (let j = 0; j < pcbVias.length; j++) {
                         const v = pcbVias[j];
                         const dist = Math.hypot(v.x - sw.x, v.y - sw.y);
@@ -1416,12 +1303,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const isLight = window.isLightTheme;
 
-                // 3. Render PCB Traces (Dynamic Brightening on Mouse Hover)
                 for (let i = 0; i < pcbTraces.length; i++) {
                     const trace = pcbTraces[i];
                     const p = trace.path;
-                    
-                    // Check mouse proximity to trace segments
+
                     const distStart = Math.hypot(mouseX - p[0].x, mouseY - p[0].y);
                     const distEnd = Math.hypot(mouseX - p[2].x, mouseY - p[2].y);
                     const isNearMouse = distStart < 160 || distEnd < 160;
@@ -1449,7 +1334,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     ctx.shadowBlur = 0;
                 }
 
-                // 4. Render PCB Solder Via Nodes (Dynamic Proximity Glow)
                 for (let i = 0; i < pcbVias.length; i++) {
                     const via = pcbVias[i];
                     const distToMouse = Math.hypot(mouseX - via.x, mouseY - via.y);
@@ -1465,7 +1349,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         ? (isGlowing ? '#b32e33' : 'rgba(184, 134, 11, 0.65)')
                         : (isGlowing ? '#00e676' : 'rgba(212, 175, 55, 0.4)');
 
-                    // Outer Via Ring
                     ctx.beginPath();
                     ctx.arc(via.x, via.y, via.radius + (isGlowing ? 1 : 0), 0, Math.PI * 2);
                     ctx.strokeStyle = ringColor;
@@ -1477,7 +1360,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     ctx.stroke();
                     ctx.shadowBlur = 0;
 
-                    // Inner Solder Pin Dot
                     ctx.beginPath();
                     ctx.arc(via.x, via.y, via.radius * 0.4, 0, Math.PI * 2);
                     ctx.fillStyle = isLight 
@@ -1486,7 +1368,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     ctx.fill();
                 }
 
-                // 5. Render Electrical Signal Pulses Traversing Traces (Accelerates near Mouse)
                 for (let i = 0; i < pcbPulses.length; i++) {
                     const pulse = pcbPulses[i];
                     const trace = pcbTraces[pulse.traceIdx];
@@ -1515,7 +1396,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         currY = p[1].y + (p[2].y - p[1].y) * ratio;
                     }
 
-                    // Draw glowing pulse dot
                     ctx.beginPath();
                     ctx.arc(currX, currY, distToMouse < 180 ? 3.2 : 2.4, 0, Math.PI * 2);
                     const pulseColor = isLight 
@@ -1528,7 +1408,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     ctx.shadowBlur = 0;
                 }
 
-                // 6. Micro Particle Dust
                 for (let i = 0; i < particles.length; i++) {
                     const pt = particles[i];
                     pt.x += pt.vx;
@@ -1558,7 +1437,6 @@ document.addEventListener('DOMContentLoaded', () => {
             renderAboutCanvas();
         }
 
-        // 2. 3D Parallax Tilt Deck for #about-parallax-card and .stat-card[data-tilt]
         const tiltCards = document.querySelectorAll('#about-parallax-card, .stat-card[data-tilt]');
 
         tiltCards.forEach(card => {
@@ -1593,10 +1471,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /* ----------------------------------------------------------------------
-       9a. Skills Section 3D Holographic Liquid Fluid Morphing Blob Engine
-       Inspired by reference design: Organic Fluid Metashapes & Specular Highlights
-       ---------------------------------------------------------------------- */
     function initSkillsFluidCanvas() {
         const canvas = document.getElementById('skills-fluid-canvas');
         const skillsSection = document.getElementById('skills');
@@ -1629,7 +1503,6 @@ document.addEventListener('DOMContentLoaded', () => {
             shockwave = 1.0;
         });
 
-        // 4 Organic Fluid Morphing Blobs
         const blobs = [
             {
                 baseXRatio: 0.15,
@@ -1672,11 +1545,10 @@ document.addEventListener('DOMContentLoaded', () => {
         function drawFluidBlob(blob) {
             const isLight = window.isLightTheme;
             const colors = isLight ? blob.colorLight : blob.colorDark;
-            
+
             let cx = width * blob.baseXRatio;
             let cy = height * blob.baseYRatio;
 
-            // Surface Tension Elasticity Mouse Distortion
             const dx = mouse.x - cx;
             const dy = mouse.y - cy;
             const dist = Math.hypot(dx, dy);
@@ -1692,13 +1564,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const points = [];
             const numPoints = 64;
 
-            // Shockwave decay
             if (shockwave > 0) shockwave = Math.max(0, shockwave - 0.02);
 
             for (let i = 0; i < numPoints; i++) {
                 const theta = (i / numPoints) * Math.PI * 2;
-                
-                // Harmonic 3D fluid surface equation
+
                 const n1 = Math.sin(theta * blob.freq + time * blob.speed) * (20 + shockwave * 35);
                 const n2 = Math.cos(theta * (blob.freq + 1) - time * blob.speed * 0.8) * 16;
                 const r = R + n1 + n2;
@@ -1709,7 +1579,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
 
-            // Draw Smooth Organic Curve
             ctx.beginPath();
             ctx.moveTo((points[0].x + points[numPoints - 1].x) / 2, (points[0].y + points[numPoints - 1].y) / 2);
 
@@ -1721,7 +1590,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             ctx.closePath();
 
-            // 3D Metallic / Pastel Volume Shading Gradient
             const grad = ctx.createRadialGradient(
                 cx - R * 0.35, cy - R * 0.35, R * 0.1,
                 cx, cy, R * 1.3
@@ -1734,7 +1602,6 @@ document.addEventListener('DOMContentLoaded', () => {
             ctx.globalAlpha = isLight ? 0.82 : 0.72;
             ctx.fill();
 
-            // 3D Glass Specular Highlight Sheen
             ctx.beginPath();
             ctx.ellipse(cx - R * 0.3, cy - R * 0.3, R * 0.25, R * 0.12, Math.PI / 4, 0, Math.PI * 2);
             ctx.fillStyle = 'rgba(255, 255, 255, 0.45)';
@@ -1758,12 +1625,8 @@ document.addEventListener('DOMContentLoaded', () => {
         render();
     }
 
-    /* ----------------------------------------------------------------------
-       10. Scroll-Triggered Typewriter Headings & Element Reveals Engine
-       Inspired by dreeyanzz.vercel.app: Character-by-Character Typewriter UI/UX
-       ---------------------------------------------------------------------- */
     function initScrollTypewriterAndReveals() {
-        // 1. Reveal-on-scroll Observer for cards, text blocks, and containers
+
         const revealElements = document.querySelectorAll('.reveal-on-scroll');
 
         function scheduleReveal(target) {
@@ -1790,12 +1653,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         revealElements.forEach(el => revealObserver.observe(el));
 
-        // 2. Character-by-Character Typewriter Heading Observer
         const typewriterHeadings = document.querySelectorAll('[data-typewriter="true"]');
 
         function parseHTMLTokens(container) {
             const tokens = [];
-            
+
             function traverse(node) {
                 if (node.nodeType === Node.TEXT_NODE) {
                     const text = node.textContent;
@@ -1910,9 +1772,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /* ----------------------------------------------------------------------
-       Navbar & CTA Smooth Scroll Engine
-       ---------------------------------------------------------------------- */
     function initSmoothScrollNavigation() {
         const anchors = document.querySelectorAll('a[href^="#"]');
         anchors.forEach(anchor => {
@@ -1928,7 +1787,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const navHeight = navbar ? navbar.offsetHeight : 80;
 
                     if (targetId === '#contact') {
-                        // Scroll directly to contact grid section
+
                         const contactGrid = document.querySelector('.contact-grid') || targetElement;
                         const targetY = contactGrid.getBoundingClientRect().top + window.pageYOffset - navHeight - 30;
 
@@ -1965,3 +1824,4 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollTypewriterAndReveals();
 
 });
+
