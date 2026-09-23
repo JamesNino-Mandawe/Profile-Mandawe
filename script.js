@@ -283,8 +283,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 ctx.closePath();
             }
         }
+        let scrollVel = 0;
+        let targetScrollVel = 0;
+        let lastScrollY = window.scrollY;
+        let animTime = 0;
+
+        window.addEventListener('scroll', () => {
+            const delta = Math.abs(window.scrollY - lastScrollY);
+            targetScrollVel = Math.min(delta * 0.12, 4.5);
+            lastScrollY = window.scrollY;
+        }, { passive: true });
 
         function render() {
+            animTime += 0.02 + scrollVel * 0.015;
+            scrollVel += (targetScrollVel - scrollVel) * 0.1;
+            targetScrollVel *= 0.90;
 
             mouse.x += (mouse.targetX - mouse.x) * 0.12;
             mouse.y += (mouse.targetY - mouse.y) * 0.12;
@@ -305,6 +318,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     const centerX = x + TILE_SIZE / 2;
                     const centerY = y + TILE_SIZE / 2;
 
+                    const waveVal = Math.sin(r * 0.45 + c * 0.35 + animTime * 2.8);
+                    const scrollIntensity = Math.max(0, waveVal) * (scrollVel / 4.5);
+
                     const distToMouse = Math.hypot(centerX - mouse.x, centerY - mouse.y);
                     const mouseInfluenceRadius = 240;
                     let mouseIntensity = 0;
@@ -313,6 +329,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         mouseIntensity = 1 - (distToMouse / mouseInfluenceRadius);
                         mouseIntensity = Math.pow(mouseIntensity, 2); 
                     }
+
+                    const combinedIntensity = Math.min(1.0, mouseIntensity + scrollIntensity * 0.85);
 
                     const distToSpotlight = Math.hypot(centerX - spotlightX, centerY - spotlightY);
                     const spotlightRadius = 650;
@@ -327,31 +345,31 @@ document.addEventListener('DOMContentLoaded', () => {
                     const isLight = window.isLightTheme;
 
                     let strokeColor = isLight 
-                        ? `rgba(184, 134, 11, ${0.45 + spotlightIntensity * 0.35})` 
-                        : `rgba(179, 46, 51, ${0.16 + spotlightIntensity * 0.22})`;
+                        ? `rgba(184, 134, 11, ${0.45 + spotlightIntensity * 0.35 + scrollIntensity * 0.3})` 
+                        : `rgba(179, 46, 51, ${0.16 + spotlightIntensity * 0.22 + scrollIntensity * 0.25})`;
                     let strokeWidth = isLight ? 1.6 : 1.2;
 
                     const grad = ctx.createLinearGradient(x, y, x + TILE_SIZE, y + TILE_SIZE);
 
-                    if (mouseIntensity > 0.01) {
+                    if (combinedIntensity > 0.01) {
                         if (isLight) {
-                            grad.addColorStop(0, `rgba(214, 40, 50, ${0.45 + mouseIntensity * 0.45})`);
-                            grad.addColorStop(1, `rgba(184, 134, 11, ${0.35 + mouseIntensity * 0.45})`);
-                            strokeColor = `rgba(179, 46, 51, ${0.75 + mouseIntensity * 0.25})`;
-                            ctx.shadowColor = `rgba(179, 46, 51, ${mouseIntensity * 0.65})`;
+                            grad.addColorStop(0, `rgba(214, 40, 50, ${0.45 + combinedIntensity * 0.45})`);
+                            grad.addColorStop(1, `rgba(184, 134, 11, ${0.35 + combinedIntensity * 0.45})`);
+                            strokeColor = `rgba(179, 46, 51, ${0.75 + combinedIntensity * 0.25})`;
+                            ctx.shadowColor = `rgba(179, 46, 51, ${combinedIntensity * 0.65})`;
                         } else {
-                            const redVal = Math.round(179 + mouseIntensity * 76);    
-                            const greenVal = Math.round(46 + mouseIntensity * 180);  
-                            const blueVal = Math.round(51 + mouseIntensity * 80);    
+                            const redVal = Math.round(179 + combinedIntensity * 76);    
+                            const greenVal = Math.round(46 + combinedIntensity * 180);  
+                            const blueVal = Math.round(51 + combinedIntensity * 80);    
 
-                            grad.addColorStop(0, `rgba(${redVal}, ${greenVal}, ${blueVal}, ${0.4 + mouseIntensity * 0.55})`);
-                            grad.addColorStop(1, `rgba(179, 46, 51, ${0.25 + mouseIntensity * 0.45})`);
+                            grad.addColorStop(0, `rgba(${redVal}, ${greenVal}, ${blueVal}, ${0.4 + combinedIntensity * 0.55})`);
+                            grad.addColorStop(1, `rgba(179, 46, 51, ${0.25 + combinedIntensity * 0.45})`);
 
-                            strokeColor = `rgba(230, 57, 70, ${0.4 + mouseIntensity * 0.6})`;
-                            ctx.shadowColor = `rgba(230, 57, 70, ${mouseIntensity * 0.85})`;
+                            strokeColor = `rgba(230, 57, 70, ${0.4 + combinedIntensity * 0.6})`;
+                            ctx.shadowColor = `rgba(230, 57, 70, ${combinedIntensity * 0.85})`;
                         }
-                        strokeWidth = 1.6 + mouseIntensity * 1.5;
-                        ctx.shadowBlur = mouseIntensity * 24;
+                        strokeWidth = 1.6 + combinedIntensity * 1.5;
+                        ctx.shadowBlur = combinedIntensity * 24;
                     } else {
 
                         const baseAlpha = 0.08 + spotlightIntensity * 0.28;
@@ -380,8 +398,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     ctx.moveTo(x, y + TILE_SIZE);
                     ctx.lineTo(x, y);
                     ctx.lineTo(x + TILE_SIZE, y);
-                    ctx.strokeStyle = mouseIntensity > 0.01 
-                        ? (isLight ? `rgba(179, 46, 51, ${0.5 + mouseIntensity * 0.4})` : `rgba(255, 224, 130, ${0.3 + mouseIntensity * 0.6})`)
+                    ctx.strokeStyle = combinedIntensity > 0.01 
+                        ? (isLight ? `rgba(179, 46, 51, ${0.5 + combinedIntensity * 0.4})` : `rgba(255, 224, 130, ${0.3 + combinedIntensity * 0.6})`)
                         : (isLight ? `rgba(184, 134, 11, ${0.35 + spotlightIntensity * 0.25})` : `rgba(212, 175, 55, ${0.12 + spotlightIntensity * 0.25})`);
                     ctx.lineWidth = 1.6;
                     ctx.stroke();
@@ -1652,6 +1670,41 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         revealElements.forEach(el => revealObserver.observe(el));
+
+        const parallaxCards = document.querySelectorAll('.stat-card, .project-row-card, .contact-card, .about-photo-card');
+        const tickerTrack = document.querySelector('.skills-ticker-track');
+
+        let lastY = window.scrollY;
+        let tickerVelocity = 0;
+
+        function updateScrollParallax() {
+            const currentY = window.scrollY;
+            const deltaY = currentY - lastY;
+            lastY = currentY;
+
+            const viewportH = window.innerHeight;
+
+            parallaxCards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                if (rect.bottom >= 0 && rect.top <= viewportH) {
+                    const progress = (rect.top + rect.height / 2 - viewportH / 2) / (viewportH / 2);
+                    const glare = card.querySelector('.stat-card-glare, .photo-card-glare, .card-glare');
+                    if (glare) {
+                        const glareY = 50 + progress * 40;
+                        glare.style.background = `radial-gradient(circle at 50% ${glareY.toFixed(1)}%, rgba(255, 215, 0, 0.22), transparent 65%)`;
+                    }
+                }
+            });
+
+            if (tickerTrack) {
+                tickerVelocity += (deltaY * 0.15 - tickerVelocity) * 0.1;
+                const skewVal = Math.min(Math.max(tickerVelocity * -0.4, -4), 4);
+                tickerTrack.style.transform = `skewX(${skewVal.toFixed(2)}deg)`;
+            }
+        }
+
+        window.addEventListener('scroll', updateScrollParallax, { passive: true });
+        updateScrollParallax();
 
         const typewriterHeadings = document.querySelectorAll('[data-typewriter="true"]');
 

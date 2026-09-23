@@ -3398,14 +3398,14 @@ section {
 
 .reveal-on-scroll {
     opacity: 0;
-    transform: translateY(35px) scale(0.98);
-    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: perspective(1200px) rotateX(12deg) translateY(50px) scale(0.95);
+    transition: opacity 0.95s cubic-bezier(0.16, 1, 0.3, 1), transform 0.95s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
     will-change: opacity, transform;
 }
 
 .reveal-on-scroll.is-revealed {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: perspective(1200px) rotateX(0deg) translateY(0) scale(1);
 }
 
 .about-stats-grid > *:nth-child(1),
